@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
+import { Route, Link} from 'react-router-dom';
 import {Navbar, NavItem, Input, Button, Row, Col} from 'react-materialize'
+import NavBar from './NavBar.js'
+import Results from './Results.js'
 import '../styles/Home.css';
 
 class Home extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar brand='Storage Share' right >
-          <NavItem onClick={() => console.log('test click')}>
-            Signup
-          </NavItem>
-          <NavItem href='components.html'>
-            Login
-          </NavItem>
-        </Navbar>
+
+        <NavBar/>
+
+        <Route path="/results" component={Results} />
         <div className="search-container screen">
           <div className="search-subcontainer">
             <Row className="search-title">
