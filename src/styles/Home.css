@@ -1,0 +1,45 @@
+.screen {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* SEARCH */
+
+.search-container {
+  background-color: palegreen;
+}
+
+.search-row {
+  border: 1px solid #DBDBDB;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  -webkit-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
+	   -moz-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
+	        box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
+}
+
+.search-row {
+  width: 500px;
+}
+
+/* ABOUT */
+
+.about-container {
+  background-color: lightblue;
+}
+
+/* SIGN UP */
+
+.signup-container {
+  background-color: #ffdb99;
+}
+
+.column {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
