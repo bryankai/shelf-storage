@@ -26,3 +26,31 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.avatar {
+    vertical-align: middle;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+
+.center-center {
+  display: flex;
+  justify-content: center;
+  align-itmes: center;
+}
+
+#space-card .card-image {
+  max-height: 50%;
+  height: 300px;
+  display: flex;
+}
+
+#space-card .card-image img{
+  position: 50% 50%
+}
+
+#space-card .card-title {
+  padding: 12px;
+}

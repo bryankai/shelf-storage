@@ -7,6 +7,7 @@ export const fetchSpaces = () => (
   dispatch => {
     request(`/spaces`)
     .then((response) => {
+      console.log(response)
       dispatch({type: FETCH_SPACES_SUCCESS, payload: response.data.data})
     })
   }
