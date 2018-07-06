@@ -8,8 +8,8 @@ class Space extends Component {
     } = this.props.space
 
     const imgCropStyle = {
-      height: '300px',
-      width: 'auto'
+      height: '100%',
+      width: '100%'
       // overflow: 'hidden',
       // display: 'flex',
       // justifyContent: 'center'
@@ -24,7 +24,7 @@ class Space extends Component {
     const spacePageLink = `/spaces/${id}`
 
     return (
-      <Col s={6} m={4} l={3}>
+      <Col s={6} m={12} l={4} xl={3}>
         <Card className='medium'
           id='space-card'
           style={imgCropStyle}

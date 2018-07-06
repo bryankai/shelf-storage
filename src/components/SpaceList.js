@@ -8,18 +8,6 @@ import '../styles/Home.css';
 import { fetchSpaces } from '../actions/spaces';
 
 class SpaceList extends Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     spaces: [
-  //       {id: 1, name: "Nice basement"},
-  //       {id: 2, name: "Mom's attic"},
-  //       {id: 3, name: 'Spacious Clean Garage'},
-  //       {id: 4, name: 'Outdoor shed'},
-  //       {id: 5, name: 'Spare bedroom'},
-  //     ]
-  //   }
-  // }
 
   // Mounting Methods
   componentDidMount = () => {
@@ -35,8 +23,8 @@ class SpaceList extends Component {
     })
 
     const spaceListStyle = {
-      display: 'flex',
-      justifyContent: 'space-evenly',
+      // display: 'flex',
+      // justifyContent: 'space-evenly',
       flexWrap: 'wrap'
     }
 
