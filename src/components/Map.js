@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { compose, withProps, withStateHandlers } from "recompose"
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
-import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox'
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
+// import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox'
 import { connect } from 'react-redux';
-
+import MarkerComp from './MarkerComp'
 
 const Map = compose(
   withProps({
@@ -13,11 +13,16 @@ const Map = compose(
     mapElement: <div style={{ height: `100%` }} />,
   }),
   withStateHandlers(() => ({
-    isOpen: false,
+    isOpen: {},
   }), {
-    onToggleOpen: ({ isOpen }) => () => ({
-      isOpen: !isOpen,
-    })
+    onToggleOpen: ({ isOpen }) => (id) => {
+      if(isOpen.hasOwnProperty(id)){
+        return { isOpen: {...isOpen, [id]:!isOpen[id] } }
+      }
+      else {
+        return { isOpen: {...isOpen, [id]:true } }
+      }
+    }
   }),
   withScriptjs,
   withGoogleMap
@@ -27,22 +32,18 @@ const Map = compose(
     defaultCenter={{ lat: 47.6599, lng: -122.3099 }}
   >
     {props.isMarkerShown &&
-      props.markers.map(marker => (
+      props.markers.map((marker, id) => (
         <div>
             <Marker
+              id={id}
               position={marker.position}
-              onClick={props.onToggleOpen}
+              // onMouseEnter={() => props.onToggleOpen(id)}
+              // onMouseLeave={() => props.onToggleOpen(id)}
+              onClick={() => props.onToggleOpen(id)}
             >
-              {props.isOpen && <InfoBox
-                onCloseClick={props.onToggleOpen}
-                options={{ closeBoxURL: ``, enableEventPropagation: true }}
-              >
-                <div style={{ backgroundColor: `yellow`, opacity: 0.75, padding: `12px` }}>
-                  <div style={{ fontSize: `16px`, fontColor: `#08233B` }}>
-                    Hello, Kaohsiung!
-                  </div>
-                </div>
-              </InfoBox>}
+              {props.isOpen[id] && <InfoWindow onCloseClick={()=>props.onToggleOpen(id)}>
+                <p>{marker.name}</p>
+              </InfoWindow>}
             </Marker>
         </div>
       ))
@@ -50,22 +51,18 @@ const Map = compose(
   </GoogleMap>
 )
 
-
-
 const mapStateToProps = (state) => ({
         markers : [{
           position: {
             lat: 47.6579,
-            lng: -122.3079,
-            name: 'Marker 1'
-          }
+            lng: -122.3079},
+          name: 'Marker 1',
         },
         {
           position: {
             lat: 47.6579,
-            lng: -122.3159,
-            name: 'Marker 2'
-        }
+            lng: -122.3159},
+          name: 'Marker 2'
       }]
     })
 
