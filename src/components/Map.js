@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { compose, withProps, withStateHandlers } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
-// import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox'
 import { connect } from 'react-redux';
-import MarkerComp from './MarkerComp'
+// import MarkerComp from './MarkerComp'
 
 const Map = compose(
   withProps({
@@ -33,19 +32,17 @@ const Map = compose(
   >
     {props.isMarkerShown &&
       props.markers.map((marker, id) => (
-        <div>
-            <Marker
-              id={id}
-              position={marker.position}
-              // onMouseEnter={() => props.onToggleOpen(id)}
-              // onMouseLeave={() => props.onToggleOpen(id)}
-              onClick={() => props.onToggleOpen(id)}
-            >
-              {props.isOpen[id] && <InfoWindow onCloseClick={()=>props.onToggleOpen(id)}>
-                <p>{marker.name}</p>
-              </InfoWindow>}
-            </Marker>
-        </div>
+          <Marker
+            key={id}
+            position={marker.position}
+            // onMouseEnter={() => props.onToggleOpen(id)}
+            // onMouseLeave={() => props.onToggleOpen(id)}
+            onClick={() => props.onToggleOpen(id)}
+          >
+            {props.isOpen[id] && <InfoWindow onCloseClick={()=>props.onToggleOpen(id)}>
+              <p>{marker.name}</p>
+            </InfoWindow>}
+          </Marker>
       ))
     }
   </GoogleMap>

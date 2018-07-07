@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { FETCH_SPACES_SUCCESS, FETCH_ONE_SPACE } from '../actions/spaces'
+import { FETCH_SPACES_SUCCESS, FETCH_ONE_SPACE, SUBMIT_SEARCH } from '../actions/spaces'
 
 const filterForActiveSpaces = (action) => {
   if(action.payload) {
@@ -20,8 +20,18 @@ const spaces = (state = [], action) => {
   }
 }
 
+const location = (state = [], action) => {
+  console.log(action.payload)
+  switch(action.type){
+    case SUBMIT_SEARCH:
+      return action.payload
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
-    spaces,
+    spaces, location
 });
 
 export default rootReducer;

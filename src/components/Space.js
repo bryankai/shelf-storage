@@ -4,7 +4,8 @@ import {Card, CardTitle, Col} from 'react-materialize'
 class Space extends Component {
 
   render() {
-    const {id, name, description, img_link, hosts_id, address, city, state, zip, temp_control, access, size, price, active, deleted_at
+    const {id, name, description, img_link,
+      // hosts_id, address, city, state, zip, temp_control, access, size, price, active, deleted_at
     } = this.props.space
 
     const imgCropStyle = {

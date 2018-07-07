@@ -4,7 +4,9 @@ import {Modal, Button, Input, Row} from 'react-materialize'
 class BookSpaceModal extends Component {
 
   render() {
-    const {name, price}  = this.props.space
+    const {name,
+      // price
+    }  = this.props.space
     const modalStyle = {
       minHeight: '600px'
     }

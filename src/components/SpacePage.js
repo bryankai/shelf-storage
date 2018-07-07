@@ -1,7 +1,7 @@
 import React, { Component }  from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {Row, Col, Button, Modal} from 'react-materialize'
+import {Row, Col} from 'react-materialize'
 import { fetchOneSpace } from '../actions/spaces';
 import BookSpaceModal from './BookSpaceModal'
 
@@ -17,7 +17,9 @@ class SpacePage extends Component {
 
   render() {
     console.log(this.props)
-    const {id, name, description, img_link, hosts_id, address, city, state, zip, temp_control, access, size, price, active, deleted_at, host_name, avatar
+    const {name, description, img_link, city, host_name, avatar, price,
+    // temp_control, access, size,  active,
+    // id, hosts_id, address, state, zip, deleted_at,
     } = this.props.spaces
 
     const imageStyle = {

@@ -14,17 +14,19 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        <BrowserRouter>
-          <Switch>
-            <Route exact path="/" render={() => (
-                <Redirect to="/home"/>
-            )}/>
-            <Route exact path='/home' component={Home}/>
-            <Route exact path='/results' component={Results}/>
-            <Route exact path='/results' component={Results}/>
-            <Route path='/spaces/:spaceId' component={SpacePage}/>
-          </Switch>
-        </BrowserRouter>
+        <div className='main'>
+          <BrowserRouter>
+            <Switch>
+              <Route exact path="/" render={() => (
+                  <Redirect to="/home"/>
+              )}/>
+              <Route exact path='/home' component={Home}/>
+              <Route exact path='/results' component={Results}/>
+              <Route exact path='/results' component={Results}/>
+              <Route path='/spaces/:spaceId' component={SpacePage}/>
+            </Switch>
+          </BrowserRouter>
+        </div>
         <Modal
           id='foo'
           header='Modal Header'>

@@ -1,4 +1,5 @@
 .App {
+  display: block;
   text-align: center;
 }
 
@@ -25,6 +26,11 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.main {
+  position: fixed;
+  top: 64px;
 }
 
 .avatar {

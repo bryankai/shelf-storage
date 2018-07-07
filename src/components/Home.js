@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import { Route} from 'react-router-dom';
 import {Input, Button, Row, Col} from 'react-materialize'
-import Results from './Results'
 import '../styles/Home.css';
 
 class Home extends Component {
   render() {
     return (
       <div className="App">
-        {/* <Route path="/results" component={Results} /> */}
         <div className="search-container screen">
           <div className="search-subcontainer">
             <Row className="search-title">
