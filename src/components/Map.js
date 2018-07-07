@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 // import MarkerComp from './MarkerComp'
 
 const Map = compose(
+
+
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCqMt2G9OftUPNZV2VCne0pnB5VIJV2Ct8",
     loadingElement: <div style={{ height: `100%` }} />,
@@ -15,6 +17,7 @@ const Map = compose(
     isOpen: {},
   }), {
     onToggleOpen: ({ isOpen }) => (id) => {
+      console.log('onToggleOpen')
       if(isOpen.hasOwnProperty(id)){
         return { isOpen: {...isOpen, [id]:!isOpen[id] } }
       }
@@ -27,40 +30,38 @@ const Map = compose(
   withGoogleMap
 )((props) =>
   <GoogleMap
-    defaultZoom={14}
+    defaultZoom={13}
+    // Old center
     defaultCenter={{ lat: 47.6599, lng: -122.3099 }}
+    // New Dynamic Center
+    // defaultCenter={props.location}
   >
     {props.isMarkerShown &&
-      props.markers.map((marker, id) => (
+      props.spaces.map((space, id) => {
+        const position = {lat: space.lat, lng: space.lng}
+        console.log(props.location, props.spaces)
+        return (
           <Marker
             key={id}
-            position={marker.position}
-            // onMouseEnter={() => props.onToggleOpen(id)}
+            position={position}
+            // onMouseOver={() => props.onToggleOpen(id)}
             // onMouseLeave={() => props.onToggleOpen(id)}
+            // onMouseEnter={() => console.log('enter')}
             onClick={() => props.onToggleOpen(id)}
-          >
-            {props.isOpen[id] && <InfoWindow onCloseClick={()=>props.onToggleOpen(id)}>
-              <p>{marker.name}</p>
-            </InfoWindow>}
-          </Marker>
-      ))
+            >
+              {props.isOpen[id] && <InfoWindow onCloseClick={()=>props.onToggleOpen(id)}>
+                <p>{space.name}</p>
+              </InfoWindow>}
+            </Marker>
+          )
+      }
+    )
     }
   </GoogleMap>
 )
 
-const mapStateToProps = (state) => ({
-        markers : [{
-          position: {
-            lat: 47.6579,
-            lng: -122.3079},
-          name: 'Marker 1',
-        },
-        {
-          position: {
-            lat: 47.6579,
-            lng: -122.3159},
-          name: 'Marker 2'
-      }]
-    })
+const mapStateToProps = ({spaces, location}) => {
+  return {spaces, location}
+}
 
 export default connect(mapStateToProps)(Map)

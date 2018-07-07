@@ -2,6 +2,7 @@ import { request } from "../helper/helper";
 export const FETCH_SPACES_SUCCESS = 'FETCH_SPACES_SUCCESS';
 export const FETCH_ONE_SPACE = 'FETCH_ONE_SPACE';
 export const SUBMIT_SEARCH = 'SUBMIT_SEARCH';
+export const CREATE_MARKERS = 'SUBMIT_SEARCH';
 
 export const fetchSpaces = () => (
   dispatch => {
@@ -9,6 +10,7 @@ export const fetchSpaces = () => (
     .then((response) => {
       console.log(response)
       dispatch({type: FETCH_SPACES_SUCCESS, payload: response.data.data})
+      dispatch({type: CREATE_MARKERS, payload: response.data.data})
     })
   }
 )

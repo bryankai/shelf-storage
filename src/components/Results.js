@@ -8,10 +8,15 @@ import '../styles/Home.css';
 
 class Results extends Component {
   render() {
+    const shiftDown = {
+      margin: '100px',
+      backgroundColor: 'yellow'
+    }
+
     return (
       <div>
         <Row>
-          <SearchBar/>
+          <SearchBar style={shiftDown}/>
         </Row>
         <Row>
           <Col s={12} m={6} l={8}>
