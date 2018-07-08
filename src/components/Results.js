@@ -11,6 +11,7 @@ class Results extends Component {
     const shiftDown = {
       margin: '100px',
       backgroundColor: 'yellow'
+
     }
 
     return (
