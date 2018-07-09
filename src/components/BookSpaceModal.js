@@ -27,6 +27,8 @@ class BookSpaceModal extends Component {
     console.log('handlePrice', this.state.startDate, this.state.endDate)
     if(this.state.startDate && this.state.endDate) {
       console.log('both exist')
+      // NEED TO FIX FOR DIFFERENT MONTHS!
+      console.log(typeof this.state.endDate)
       const startDateVal = this.state.startDate.slice(0,2)
       const endDateVal = this.state.endDate.slice(0,2)
       const duration = endDateVal - startDateVal
