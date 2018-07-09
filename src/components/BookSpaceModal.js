@@ -74,7 +74,7 @@ class LoginModal extends Component {
         <Row className='date-selection'>
           <form className='book-form' id='book-form' onSubmit={event => this.handleSubmit(event, id)}>
             <Input name='on' type='date' label="Start Date"   id="startDate"
-              // need to implement price calc
+              // need to implement price calc - maybe use momentJS?
               onChange={event => this.setState({startDate: event.target.value})}
             />
             <Input name='on' type='date' label="End Date" id="endDate"

@@ -96,6 +96,10 @@
   font-size: 24px;
 }
 
+.modal .modal-content {
+  padding-bottom: 0px;
+}
+
 .input-field {
   margin: 10px 15px 10px 15px;
 }
@@ -104,6 +108,18 @@ div #book-results {
   font-size: 18px;
 }
 
+
+/* Login */
 .login-form {
   margin-top: 25px;
+}
+
+.login-hide-auth-error {
+  visibility:hidden;
+}
+
+.login-auth-error {
+  /* margin-bottom: 5px; */
+  text-align: center;
+  color: red;
 }

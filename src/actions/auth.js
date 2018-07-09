@@ -11,27 +11,24 @@ export const USER_SIGNUP_FAILED = 'USER_SIGNUP_FAILED';
 export const GET_USER = 'GET_USER';
 export const NOT_LOGGED_IN = 'NOT_LOGGED_IN';
 
-export const USER_LOGOUT = 'USER_LOGOUT';
-
-export const CLEAR_DAILIES = 'CLEAR_DAILIES';
-export const CLEAR_DUELS = 'CLEAR_DUELS';
+export const GUEST_LOGOUT = 'GUEST_LOGOUT';
 
 export const userLogin = (email, password) => (
   dispatch => {
-    console.log(email, password)
+    // console.log(email, password)
     dispatch({type: USER_LOGIN_PENDING});
-    request('/auth/token', 'post', {email, password})
+    return request('/auth/token', 'post', {email, password})
     .then(response => {
       localStorage.setItem('token', response.data.token);
       return request('/auth/token');
     })
-    .then(response => {
-      AuthenticationService.setAuthState(response.data);
+    .then(async response => {
+      await AuthenticationService.setAuthState(response.data);
       dispatch({
         type: USER_LOGIN_SUCCESS,
         payload: response.data
-      });
-      // history.push('/results');
+      })
+      return true
     })
     .catch(error => {
       dispatch({
@@ -80,12 +77,10 @@ export const getUser = () => (
   }
 );
 
-export const userLogout = () => (
+export const guestLogout = () => (
   dispatch => {
     localStorage.removeItem('token');
-    dispatch({type: USER_LOGOUT});
-    dispatch({type: CLEAR_DAILIES});
-    dispatch({type: CLEAR_DUELS});
+    dispatch({type: GUEST_LOGOUT});
     AuthenticationService.setAuthState(null)
   }
 );

@@ -7,7 +7,7 @@ import {
   USER_SIGNUP_FAILED,
   GET_USER,
   NOT_LOGGED_IN,
-  USER_LOGOUT
+  GUEST_LOGOUT
 } from '../actions/auth';
 
 
@@ -38,7 +38,7 @@ export const auth = (state = initialState, action) => {
       return {...state, isLoading: false, user: action.payload, authorized: true};
     case NOT_LOGGED_IN:
       return {...state, isLoading: false, authorized: false};
-    case USER_LOGOUT:
+    case GUEST_LOGOUT:
       return {...state, user: {}, authorized: false};
     default:
       return state;

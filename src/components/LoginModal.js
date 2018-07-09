@@ -11,63 +11,32 @@ class LoginModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // firstName: "",
-      // lastName: "",
       email: "",
       password: "",
       loginType: 'guest' //guest || host
-      // newUser: false
     };
   }
-  //
-  // settingFormToState = ({ name, value }) => {
-  //   this.setState({ [name]: value });
-  // };
-  //
-  // handleNewUser = () => {
-  //   this.setState({ newUser: true });
-  // };
-  //
-  handleLogin = (event) => {
+
+  handleLogin = async (event) => {
     event.preventDefault()
-    console.log('!!!!!', event)
-    console.log(this.state.email, this.state.password)
-    this.props.userLogin(this.state.email, this.state.password)
+    const isAuthenticated = await this.props.userLogin(this.state.email, this.state.password)
+    console.log(isAuthenticated)
+    if (isAuthenticated) {
+      window.$('#myModal').modal('close');
+      window.$('#materialize-modal-overlay-1').css('opacity', '0')
+    }
   };
-  //
-  // createNewUser = () => {
-  //   request("/users", "post", {
-  //     firstName: this.state.firstName,
-  //     lastName: this.state.lastName,
-  //     email: this.state.email,
-  //     password: this.state.password
-  //   }).then(response => {
-  //     request("/auth/token", "post", {
-  //       email: response.data.data.email,
-  //       password: this.state.password
-  //     })
-  //       .then(response => {
-  //         localStorage.setItem("token", response.data.token);
-  //         return request("/auth/token");
-  //       })
-  //       .then(response => {
-  //         AuthenticationService.setAuthState(response.data);
-  //         this.props.handleClose();
-  //       });
-  //   });
-  // };
 
   render() {
     const modalStyle = {
-      // minHeight: '550px',
-      // maxWidth: '500px',
       justifyContent: 'center',
-      height: '340px',
+      height: '330px',
     }
 
     return (
       <Modal style={modalStyle}
         header='Login'
+        id='myModal'
         fixedFooter
         actions={
           <div className='modal-footer-buttons'>
@@ -80,38 +49,30 @@ class LoginModal extends Component {
         trigger={
             <div>Login</div>
         }>
-          <form className='login-form' id='login-form'
+          <form className='login-form'
+            id='login-form'
             onSubmit={event =>
-              // console.log('login')}
               this.handleLogin(event)}
             >
             <Input type="email" label="Email" s={12}
               onChange={event =>
-                // console.log(event.target.value)}
                 this.setState({email: event.target.value})}
             />
             <Input type="password" label="password" s={12}
               onChange={event =>
-                // console.log(event.target.value)}
                 this.setState({password: event.target.value})}
             />
           </form>
-        <Row id='alerts'>
-          {/* { this.state.alert ?
-          <p className='alert'>ERROR: Email and/or password do not match database.</p>
-            : null
-          } */}
-        </Row>
+        <div className={ this.props.auth.showLoginError ? 'login-auth-error' : 'login-hide-auth-error' }>
+          Invalid Username or Password
+        </div>
       </Modal>
     )
   }
 }
 
-const mapStateToProps = state => ({showLoginError: state.auth.showLoginError});
+const mapStateToProps = ({auth}) => ({auth});
 
 const mapDispatchToProps = dispatch => (bindActionCreators({userLogin}, dispatch));
 
-export default connect(
-  mapStateToProps,
-  // null,
-  mapDispatchToProps)(LoginModal);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginModal);
