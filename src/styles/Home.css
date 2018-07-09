@@ -1,5 +1,5 @@
 .screen {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,8 +7,17 @@
 
 /* SEARCH */
 
+.white-title {
+  color: white;
+}
+
 .search-container {
-  background-color: palegreen;
+  /* background-color: palegreen; */
+  background-image: url('../assets/suitcases.jpeg')
+}
+
+.search-subcontainer {
+  
 }
 
 .search-row {
@@ -30,6 +39,13 @@
 
 .about-container {
   background-color: lightblue;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.steps-col {
+  margin-bottom: 30px;
 }
 
 /* SIGN UP */

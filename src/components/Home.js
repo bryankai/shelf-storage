@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import {Input, Button, Row, Col} from 'react-materialize'
 import '../styles/Home.css';
+import search from '../assets/flat/search.png'
+import reserve from '../assets/flat/reserve.png'
+import move from '../assets/flat/move.png'
 
 class Home extends Component {
   render() {
@@ -8,7 +11,7 @@ class Home extends Component {
       <div className="App">
         <div className="search-container screen">
           <div className="search-subcontainer">
-            <Row className="search-title">
+            <Row className="search-title white-title">
               <h3>Find storage in your area</h3>
             </Row>
             <Row className="search-row">
@@ -22,6 +25,25 @@ class Home extends Component {
         <div className="about-container screen">
           <Row className="title">
             <h3>How it Works</h3>
+          </Row>
+          <Row className="steps">
+            <Col className='steps-col' s={12} l={4}>
+              <img src={search} alt="search"/>
+              <h4>Search</h4>
+              <h5>Search for storage space that suits you</h5>
+            </Col>
+            <Col className='steps-col' s={12} l={4}>
+              <img src={reserve} alt="reserve"/>
+              <h4>Reserve</h4>
+              <h5>Connect with local hosts, confirm details & pay
+</h5>
+            </Col>
+            <Col className='steps-col' s={12} l={4}>
+              <img src={move} alt="move"/>
+              <h4>Shelf It</h4>
+              <h5>Move your items into storage, and relax</h5>
+            </Col>
+
           </Row>
         </div>
         <div className="signup-container screen">
