@@ -7,8 +7,6 @@ class MapContainer extends Component {
     isMarkerShown: false,
   }
 
-
-
   componentDidMount() {
     this.delayedShowMarker()
   }
@@ -27,10 +25,12 @@ class MapContainer extends Component {
 
   render() {
     return (
-      <Map
-        isMarkerShown={this.state.isMarkerShown}
-        onMarkerClick={this.handleMarkerClick}
-      />
+      <div id='map-container'>
+        <Map
+          isMarkerShown={this.state.isMarkerShown}
+          onMarkerClick={this.handleMarkerClick}
+        />
+      </div>
     )
   }
 }

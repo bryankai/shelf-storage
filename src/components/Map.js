@@ -50,7 +50,7 @@ const Map = compose(
             onClick={() => props.onToggleOpen(id)}
             >
               {props.isOpen[id] && <InfoWindow onCloseClick={()=>props.onToggleOpen(id)}>
-                <p>{space.name}</p>
+                <div>{space.name}</div>
               </InfoWindow>}
             </Marker>
           )

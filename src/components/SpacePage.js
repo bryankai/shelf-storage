@@ -48,7 +48,7 @@ class SpacePage extends Component {
               <Col s={9} className="space-title">
                 <h2>{name} </h2>
                 <h4>{city}</h4>
-                <h5>${price} per day </h5>
+                <h5>${price} / day </h5>
               </Col>
               <Col s={3} className='center-center' style={hostStyle}>
                 <div className='host-details'>

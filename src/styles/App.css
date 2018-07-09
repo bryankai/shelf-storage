@@ -47,13 +47,16 @@
 }
 
 #space-card .card-image {
-  max-height: 50%;
+  /* max-height: 50%; */
   height: 300px;
   display: flex;
+  justify-content: center;
 }
 
 #space-card .card-image img{
-  position: 50% 50%
+  position: 50% 50%;
+  height: 100%;
+  width: auto;
 }
 
 #space-card .card-title {
@@ -64,8 +67,39 @@
   background-color: gray
 }
 
+.card-content div {
+  padding-bottom: 40px;
+  min-height: 100px;
+}
+
 /* ALERT */
 /* The alert message box */
 .alert {
     color: #f44336;
+}
+
+.book-form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.date-selection {
+  display: flex;
+  justify-content: space-around;
+}
+
+.modal-instructions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+  font-size: 24px;
+}
+
+.input-field {
+  margin: 10px 15px 10px 15px;
+}
+
+div #book-results {
+  font-size: 18px;
 }

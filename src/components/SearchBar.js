@@ -31,6 +31,7 @@ class SearchBar extends React.Component {
   render() {
     const shiftDown = {
       marginTop: '64px',
+      zIndex: '5'
     }
     return (
       <div className='search-bar-container' style={shiftDown}>
@@ -43,7 +44,7 @@ class SearchBar extends React.Component {
               <div>
                 <input
                   {...getInputProps({
-                    placeholder: 'Search Places ...',
+                    placeholder: 'Search Spaces...',
                     className: 'location-search-input',
                   })}
                 />

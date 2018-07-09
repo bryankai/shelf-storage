@@ -15,7 +15,7 @@ class NavBar extends Component {
         <NavItem className="nav-link" href="/results">
           Results
         </NavItem>
-        <NavItem href='components.html'>
+        <NavItem href="/login">
           Login
         </NavItem>
       </Navbar>

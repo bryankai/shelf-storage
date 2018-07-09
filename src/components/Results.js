@@ -5,27 +5,27 @@ import MapContainer from './MapContainer'
 import SearchBar from './SearchBar'
 
 import '../styles/Home.css';
+import '../styles/Results.css';
 
 class Results extends Component {
   render() {
     const shiftDown = {
-      margin: '100px',
-      backgroundColor: 'yellow'
-
+      margin: '70px',
     }
 
     return (
       <div>
         <Row>
-          <SearchBar style={shiftDown}/>
+
         </Row>
-        <Row>
-          <Col s={12} m={6} l={8}>
+        <Row style={shiftDown}>
+          <Col s={6} m={6} l={8} id='spacelist-column'>
             <h4> Search Results </h4>
             <SpaceList/>
           </Col>
-          <Col s={0} m={6} l={4}>
-            <MapContainer/>
+          <Col s={6} m={6} l={4} id='map-column'>
+            <SearchBar/>
+            <MapContainer />
           </Col>
         </Row>
       </div>

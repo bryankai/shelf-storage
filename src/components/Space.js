@@ -28,7 +28,7 @@ class Space extends Component {
       <Col s={6} m={12} l={4} xl={3}>
         <Card className='medium'
           id='space-card'
-          style={imgCropStyle}
+          // style={imgCropStyle}
           header={<CardTitle image={img_link} >{truncateString(name,21)}</CardTitle>}
           actions={[<a key={id} href={spacePageLink}>See Details</a>]}>
           {truncateString(description, 50)}

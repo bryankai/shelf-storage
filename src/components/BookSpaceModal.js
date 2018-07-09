@@ -1,17 +1,15 @@
 import React, { Component }  from 'react';
-import {Modal, Button, Input, Row, Table} from 'react-materialize'
+import {Modal, Button, Input, Row} from 'react-materialize'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { createOrder } from '../actions/guests';
 
-class BookSpaceModal extends Component {
+class LoginModal extends Component {
   state = {
-    startDate: null,
-    endDate: null,
-    duration: null,
-    totalCost: '',
-    alert: false
+    email: '',
+    password: '',
+    loginType: 'guest' //guest || host
   };
 
   handleSubmit = (event, spaceId) => {
@@ -52,8 +50,10 @@ class BookSpaceModal extends Component {
   render() {
     const {id, name, price}  = this.props.space
     const modalStyle = {
-      height: '600px',
-      maxWidth: '500px'
+      minHeight: '550px',
+      maxWidth: '500px',
+      fontSize: '1em',
+      justifyContent: 'center'
     }
 
     return (
@@ -67,47 +67,28 @@ class BookSpaceModal extends Component {
           </div>
         }
         trigger={<Button>MODAL</Button>}>
-        <Row>
+        <div className='modal-body'>
+
+        </div>
+        <div className='modal-instructions'>
+          <div>Select Dates</div>
+        </div>
+        <Row className='date-selection'>
           <form className='book-form' id='book-form' onSubmit={event => this.handleSubmit(event, id)}>
             <Input name='on' type='date' label="Start Date"   id="startDate"
               // need to implement price calc
               onChange={event => this.setState({startDate: event.target.value})}
             />
+            {/* <div> -> </div> */}
             <Input name='on' type='date' label="End Date" id="endDate"
               onChange={event => this.setState({endDate: event.target.value})}
             />
           </form>
         </Row>
-        <Row>
+        <Row id='book-results'>
           { this.state.alert ?
           <p className='alert'>ERROR.  Start Date must be before End Date.</p>
-            : <div>
-              {this.state.totalCost?
-                <div>
-                  <p>Duration: {this.state.duration} days </p>
-                  <p>Price/day: ${price} </p>
-                  <p><b>
-                    Total Cost: ${this.state.totalCost}
-                  </b></p>
-                  <Table>
-                    <tbody>
-                      <tr>
-                        <td>${price} x {this.state.duration} days</td>
-                        <td>${this.state.totalCost}</td>
-                      </tr>
-                      {/* <tr>
-                        <td>Service fee</td>
-                        <td>$3.76</td>
-                      </tr>
-                      <tr>
-                        <td>Jonathan</td>
-                        <td>$7.00</td>
-                      </tr> */}
-                    </tbody>
-                  </Table>
-                </div>
-                :null}
-            </div>
+            : null
           }
         </Row>
       </Modal>
@@ -119,4 +100,4 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({createOrder}, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(BookSpaceModal)
+export default connect(null, mapDispatchToProps)(LoginModal)

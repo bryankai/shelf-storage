@@ -1,0 +1,21 @@
+
+#map-column {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  /* width: 30%;
+  height: 100%; */
+}
+
+#spacelist-column {
+  float: right;
+  right: 30%;
+  /* width: 70%;
+  height: 100%; */
+}
+
+#map-container {
+  /* position: fixed;
+  bottom: 0;
+  left: 0; */
+}
