@@ -1,6 +1,10 @@
 import React, { Component }  from 'react';
 import {Modal, Button, Input, Row, Table} from 'react-materialize'
 
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { createOrder } from '../actions/guests';
+
 class BookSpaceModal extends Component {
   state = {
     startDate: null,
@@ -10,11 +14,11 @@ class BookSpaceModal extends Component {
     alert: false
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event, spaceId) => {
     event.preventDefault()
-    // this.props.userLogin(this.state, this.props.history);
-    // this.setState(this.state);
-    // console.log(this.state)
+    const guestId = 1 //Later, grab from authState
+    console.log(guestId, spaceId, this.state.startDate,this.state.endDate, this.state.totalCost)
+    this.props.createOrder(guestId, spaceId, this.state.startDate,this.state.endDate, this.state.totalCost)
   }
 
 
@@ -44,18 +48,11 @@ class BookSpaceModal extends Component {
   }
 
   render() {
-    const {name,
-      price
-    }  = this.props.space
+    const {id, name, price}  = this.props.space
     const modalStyle = {
       height: '600px',
       maxWidth: '500px'
     }
-
-
-    // this.handlePriceCalc(price)
-    console.log(this.state)
-    console.log()
 
     return (
       <Modal style={modalStyle}
@@ -63,13 +60,13 @@ class BookSpaceModal extends Component {
         fixedFooter
         actions={
           <div className='modal-footer-buttons'>
-            <Button className={this.state.duration<1 ? 'book-space-button disabled' : 'book-space-button'} waves='light' type="submit" form="book-form" value="Book" modal="close" onClick={}>Book</Button>
+            <Button className={this.state.duration<1 ? 'book-space-button disabled' : 'book-space-button'} waves='light' type="submit" form="book-form" value="Book" modal="close">Book</Button>
             <Button flat modal="close" waves="light">Close</Button>
           </div>
         }
         trigger={<Button>MODAL</Button>}>
         <Row>
-          <form className='book-form' id='book-form' onSubmit={event => this.handleSubmit(event)}>
+          <form className='book-form' id='book-form' onSubmit={event => this.handleSubmit(event, id)}>
             <Input name='on' type='date' label="Start Date"   id="startDate"
               // need to implement price calc
               onChange={event => this.setState({startDate: event.target.value})}
@@ -116,4 +113,8 @@ class BookSpaceModal extends Component {
   }
 }
 
-export default BookSpaceModal
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({createOrder}, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(BookSpaceModal)

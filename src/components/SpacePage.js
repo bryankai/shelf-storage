@@ -17,9 +17,9 @@ class SpacePage extends Component {
 
   render() {
     console.log(this.props)
-    const {name, description, img_link, city, host_name, avatar, price,
+    const {id, name, description, img_link, city, host_name, avatar, price,
     // temp_control, access, size,  active,
-    // id, hosts_id, address, state, zip, deleted_at,
+    // hosts_id, address, state, zip, deleted_at,
     } = this.props.spaces
 
     const imageStyle = {
@@ -64,7 +64,7 @@ class SpacePage extends Component {
               {/* <Button waves='light'
                 onClick={() => {$('#foo').modal('open')}}>Book
               </Button> */}
-              <BookSpaceModal space={{name, price}}/>
+              <BookSpaceModal space={{id, name, price}}/>
             </Row>
           </div>
         </div>
