@@ -1,5 +1,4 @@
-import request from '../helpers/request';
-import AuthenticationService from "../helpers/AuthenticationService";
+import { request, AuthenticationService } from "../helper/helper";
 
 export const USER_LOGIN_PENDING = 'USER_LOGIN_PENDING';
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
@@ -17,8 +16,9 @@ export const USER_LOGOUT = 'USER_LOGOUT';
 export const CLEAR_DAILIES = 'CLEAR_DAILIES';
 export const CLEAR_DUELS = 'CLEAR_DUELS';
 
-export const userLogin = ({email, password}, history) => (
+export const userLogin = (email, password) => (
   dispatch => {
+    console.log(email, password)
     dispatch({type: USER_LOGIN_PENDING});
     request('/auth/token', 'post', {email, password})
     .then(response => {
@@ -31,14 +31,13 @@ export const userLogin = ({email, password}, history) => (
         type: USER_LOGIN_SUCCESS,
         payload: response.data
       });
-      history.push('/welcome');
+      // history.push('/results');
     })
     .catch(error => {
       dispatch({
         type: USER_LOGIN_FAILED,
         payload: error
       });
-      history.push('/login');
     });
   }
 );

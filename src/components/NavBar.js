@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import {Navbar, NavItem} from 'react-materialize'
+import LoginModal from './LoginModal'
 
 class NavBar extends Component {
+  // For testing until I set up authState
+  state= {
+    authState: false
+  }
+
   render () {
     // Style to fix nav NOT WORKING
     const navStyle = {
@@ -13,10 +19,12 @@ class NavBar extends Component {
     return (
       <Navbar brand='Storage Share' right style={navStyle}>
         <NavItem className="nav-link" href="/results">
-          Results
+          Search
         </NavItem>
-        <NavItem href="/login">
-          Login
+        <NavItem
+          // onClick={handleLogin}
+          >
+            {this.state.authState ? 'Logout' : <LoginModal/> }
         </NavItem>
       </Navbar>
     )

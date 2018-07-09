@@ -1,5 +1,5 @@
 import React, { Component }  from 'react';
-import {Modal, Button, Input, Row} from 'react-materialize'
+import {Modal, Button, Input, Row, Table} from 'react-materialize'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -7,9 +7,10 @@ import { createOrder } from '../actions/guests';
 
 class LoginModal extends Component {
   state = {
-    email: '',
-    password: '',
-    loginType: 'guest' //guest || host
+    startDate: null,
+    endDate: null,
+    duration: null,
+    totalCost: null,
   };
 
   handleSubmit = (event, spaceId) => {
@@ -66,10 +67,7 @@ class LoginModal extends Component {
             <Button flat modal="close" waves="light">Close</Button>
           </div>
         }
-        trigger={<Button>MODAL</Button>}>
-        <div className='modal-body'>
-
-        </div>
+        trigger={<Button>Book Now!</Button>}>
         <div className='modal-instructions'>
           <div>Select Dates</div>
         </div>
@@ -79,7 +77,6 @@ class LoginModal extends Component {
               // need to implement price calc
               onChange={event => this.setState({startDate: event.target.value})}
             />
-            {/* <div> -> </div> */}
             <Input name='on' type='date' label="End Date" id="endDate"
               onChange={event => this.setState({endDate: event.target.value})}
             />
@@ -87,8 +84,26 @@ class LoginModal extends Component {
         </Row>
         <Row id='book-results'>
           { this.state.alert ?
-          <p className='alert'>ERROR.  Start Date must be before End Date.</p>
-            : null
+          <p className='alert'>ERROR: Start Date must be before End Date.</p>
+            : <div>
+              {this.state.totalCost?
+                <div>
+                  {/* <p>Duration: {this.state.duration} days </p>
+                  <p>Price/day: ${price} </p>
+                  <p><b>
+                    Total Cost: ${this.state.totalCost}
+                  </b></p> */}
+                  <Table>
+                    <tbody>
+                      <tr>
+                        <td>${price} x {this.state.duration} days</td>
+                        <td>${this.state.totalCost}</td>
+                      </tr>
+                    </tbody>
+                  </Table>
+                </div>
+                :null}
+            </div>
           }
         </Row>
       </Modal>

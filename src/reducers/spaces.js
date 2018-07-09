@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import { FETCH_SPACES_SUCCESS, FETCH_ONE_SPACE, CREATE_MARKERS, SUBMIT_SEARCH } from '../actions/spaces'
 
 // Helper Functions
@@ -37,7 +36,7 @@ const filterForActiveSpaces = (action) => {
 // }
 
 // Reducers
-const spaces = (state = [], action) => {
+export const spaces = (state = [], action) => {
   switch(action.type){
     case FETCH_SPACES_SUCCESS:
       return filterForActiveSpaces(action)
@@ -48,7 +47,7 @@ const spaces = (state = [], action) => {
   }
 }
 
-const location = (locationState = [], action) => {
+export const location = (locationState = [], action) => {
   console.log(action.payload)
   switch(action.type){
     case SUBMIT_SEARCH:
@@ -62,8 +61,8 @@ const location = (locationState = [], action) => {
 
 
 
-const rootReducer = combineReducers({
-    spaces, location,
-});
+// const rootReducer = combineReducers({
+//     spaces, location,
+// });
 
-export default rootReducer;
+// export default rootReducer;
