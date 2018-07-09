@@ -59,3 +59,13 @@
 #space-card .card-title {
   padding: 12px;
 }
+
+#book-space-button-disabled{
+  background-color: gray
+}
+
+/* ALERT */
+/* The alert message box */
+.alert {
+    color: #f44336;
+}
