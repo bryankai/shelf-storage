@@ -30,16 +30,14 @@ const Map = compose(
   withGoogleMap
 )((props) =>
   <GoogleMap
-    defaultZoom={13}
-    // Old center
-    defaultCenter={{ lat: 47.6599, lng: -122.3099 }}
-    // New Dynamic Center
-    // defaultCenter={props.location}
+    defaultZoom={12}
+    // Dynamic center based on search location
+    center={props.searchLocation || { lat: 47.6599, lng: -122.3099 }}
   >
     {props.isMarkerShown &&
       props.spaces.map((space, id) => {
         const position = {lat: space.lat, lng: space.lng}
-        console.log(props.location, props.spaces)
+        console.log(props.searchLocation, props.spaces)
         return (
           <Marker
             key={id}
@@ -60,8 +58,8 @@ const Map = compose(
   </GoogleMap>
 )
 
-const mapStateToProps = ({spaces, location}) => {
-  return {spaces, location}
+const mapStateToProps = ({spaces, searchLocation}) => {
+  return {spaces, searchLocation}
 }
 
 export default connect(mapStateToProps)(Map)

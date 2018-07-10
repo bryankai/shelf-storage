@@ -6,3 +6,7 @@
 .space-title{
   text-align: left;
 }
+
+.DateRangePicker_picker {
+  z-index: 999;
+}

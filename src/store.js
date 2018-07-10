@@ -3,11 +3,11 @@ import { combineReducers } from 'redux';
 import logger from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 
-import {spaces, location} from './reducers/spaces'
+import {spaces, searchLocation} from './reducers/spaces'
 import {auth} from './reducers/auth'
 
 const rootReducer = combineReducers({
-    spaces, location, auth
+    spaces, searchLocation, auth
 });
 
 export default(initialState) => {

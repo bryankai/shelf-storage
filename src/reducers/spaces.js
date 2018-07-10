@@ -1,4 +1,4 @@
-import { FETCH_SPACES_SUCCESS, FETCH_ONE_SPACE, CREATE_MARKERS, SUBMIT_SEARCH } from '../actions/spaces'
+import { FETCH_SPACES_SUCCESS, FETCH_ONE_SPACE, SUBMIT_SEARCH } from '../actions/spaces'
 
 // Helper Functions
 const filterForActiveSpaces = (action) => {
@@ -47,7 +47,7 @@ export const spaces = (state = [], action) => {
   }
 }
 
-export const location = (locationState = [], action) => {
+export const searchLocation = (state = null, action) => {
   console.log(action.payload)
   switch(action.type){
     case SUBMIT_SEARCH:
@@ -55,14 +55,6 @@ export const location = (locationState = [], action) => {
       return action.payload
     default:
       console.log('location state')
-      return locationState
+      return state
   }
 }
-
-
-
-// const rootReducer = combineReducers({
-//     spaces, location,
-// });
-
-// export default rootReducer;

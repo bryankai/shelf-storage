@@ -2,7 +2,7 @@ import { request } from "../helper/helper";
 export const FETCH_SPACES_SUCCESS = 'FETCH_SPACES_SUCCESS';
 export const FETCH_ONE_SPACE = 'FETCH_ONE_SPACE';
 export const SUBMIT_SEARCH = 'SUBMIT_SEARCH';
-export const CREATE_MARKERS = 'SUBMIT_SEARCH';
+export const CREATE_MARKERS = 'CREATE_MARKERS';
 
 export const fetchSpaces = () => (
   dispatch => {
@@ -25,9 +25,9 @@ export const fetchOneSpace = (id) => (
 )
 
 // Map
-export const submitSearch = (location) => (
+export const submitSearch = (searchLocation) => (
   dispatch => {
-      console.log(location)
-      dispatch({type: SUBMIT_SEARCH, payload: location})
+      console.log('action searchLocation',searchLocation)
+      dispatch({type: SUBMIT_SEARCH, payload: searchLocation})
   }
 )
