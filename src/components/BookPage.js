@@ -49,7 +49,6 @@ class BookPage extends Component {
           <div>Select Dates</div>
         </div>
         <DateRangePicker
-          className="calendar"
           startDateId="startDate"
           endDateId="endDate"
           startDate={this.state.startDate}
@@ -76,9 +75,7 @@ class BookPage extends Component {
             </div>
           }
         </Row>
-        <div className='modal-footer-buttons'>
-          <Button className={this.state.duration<1 ? 'book-space-button disabled' : 'book-space-button'} waves='light' type="submit" form="book-form" value="Book" modal="close">Book</Button>
-        </div>
+        <Button className={this.state.duration<1 ? 'book-space-button disabled' : 'book-space-button'} waves='light' value="Book" onClick={event => this.handleSubmit(event, id)}>Book</Button>
       </div>
     )
   }
