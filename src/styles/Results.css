@@ -19,3 +19,9 @@
   bottom: 0;
   left: 0; */
 }
+
+.autocomplete-dropdown-container {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+}

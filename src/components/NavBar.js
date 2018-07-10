@@ -21,7 +21,7 @@ class NavBar extends Component {
       zIndex: '999'
     }
     return (
-      <Navbar brand='Storage Share' right style={navStyle}>
+      <Navbar brand='Shelf' right style={navStyle}>
         <NavItem className="nav-link" href="/results">
           Search
         </NavItem>

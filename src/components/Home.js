@@ -12,7 +12,7 @@ class Home extends Component {
         <div className="search-container screen">
           <div className="search-subcontainer">
             <Row className="search-title white-title">
-              <h3>Find storage in your area</h3>
+              <h3><b>Find storage in your area</b></h3>
             </Row>
             <Row className="search-row">
               <form className='search-form' id='search-form'  s={8}>
@@ -24,32 +24,31 @@ class Home extends Component {
         </div>
         <div className="about-container screen">
           <Row className="title">
-            <h3>How it Works</h3>
+            <h2>How Shelf Works</h2>
           </Row>
           <Row className="steps">
             <Col className='steps-col' s={12} l={4}>
               <img src={search} alt="search"/>
-              <h4>Search</h4>
-              <h5>Search for storage space that suits you</h5>
+              <div className='step-title'>Search</div>
+              <h5>Search for a storage space</h5>
             </Col>
             <Col className='steps-col' s={12} l={4}>
               <img src={reserve} alt="reserve"/>
-              <h4>Reserve</h4>
-              <h5>Connect with local hosts, confirm details & pay
-</h5>
+              <div className='step-title'>Reserve</div>
+              <h5>Connect with local hosts and reserve your space </h5>
             </Col>
             <Col className='steps-col' s={12} l={4}>
               <img src={move} alt="move"/>
-              <h4>Shelf It</h4>
-              <h5>Move your items into storage, and relax</h5>
+              <div className='step-title'>Shelf It</div>
+              <h5>Move your items in to storage and relax</h5>
             </Col>
 
           </Row>
         </div>
         <div className="signup-container screen">
-          <div className="search-subcontainer">
+          <div className="signup-subcontainer">
             <Row className="title">
-              <h1>Join Storage Space</h1>
+              <h1>Join Shelf</h1>
             </Row>
             <Row className="buttons-box">
               <Col s={12} m={6} className='guest-column'>

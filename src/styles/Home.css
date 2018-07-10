@@ -16,10 +16,6 @@
   background-image: url('../assets/suitcases.jpeg')
 }
 
-.search-subcontainer {
-  
-}
-
 .search-row {
   border: 1px solid #DBDBDB;
   background-color: white;
@@ -48,10 +44,31 @@
   margin-bottom: 30px;
 }
 
-/* SIGN UP */
+.steps-col div {
+  font-size: 40px;
+}
 
+/* SIGN UP */
 .signup-container {
-  background-color: #ffdb99;
+  /* background-color: #ffdb99; */
+  background-image: url('../assets/shelf_bike.jpeg');
+  opacity: 0.9;
+  margin: 0;
+  padding: 0;
+  /* font-family: sans-serif; */
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-size: cover;
+}
+
+
+
+.signup-subcontainer {
+  width: 80%;
+}
+
+.buttons-box button {
+  margin: 10px;
 }
 
 .column {
