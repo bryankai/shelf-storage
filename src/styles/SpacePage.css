@@ -10,3 +10,61 @@
 .DateRangePicker_picker {
   z-index: 999;
 }
+
+.booking-col {
+  padding-left: 24px;
+  padding-right: 24px;
+  margin: 0px;
+}
+
+.booking-container {
+  margin: 20px;
+  border: 1px solid #e4e4e4;
+  padding: 24px;
+}
+
+.booking-instructions {
+  display: flex;
+  justify-content: space-around;
+  font-size: 24px;
+}
+
+.DateRangePicker {
+ width: 100%;
+}
+
+.DateRangePicker > div {
+  display: flex;
+  justify-content: center;
+}
+
+.DateRangePickerInput {
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  /* width: 100%; */
+  width: 250px;
+  padding: 0 10px 0 10px;
+}
+
+.DateInput .DateInput_input {
+  padding: 0 10px 0 10px;
+  margin-bottom: 5px;
+}
+
+/* Calendar */
+.DateRangePicker_picker {
+  left:-200px;
+}
+
+
+/* Booking Details */
+
+
+.table-col-1 {
+  width: 60%;
+}
+
+.table-col-2 {
+  width: 40%;
+}

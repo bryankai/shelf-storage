@@ -17,7 +17,6 @@ const Map = compose(
     isOpen: {},
   }), {
     onToggleOpen: ({ isOpen }) => (id) => {
-      console.log('onToggleOpen')
       if(isOpen.hasOwnProperty(id)){
         return { isOpen: {...isOpen, [id]:!isOpen[id] } }
       }
@@ -37,14 +36,12 @@ const Map = compose(
     {props.isMarkerShown &&
       props.spaces.map((space, id) => {
         const position = {lat: space.lat, lng: space.lng}
-        console.log(props.searchLocation, props.spaces)
         return (
           <Marker
             key={id}
             position={position}
             // onMouseOver={() => props.onToggleOpen(id)}
-            // onMouseLeave={() => props.onToggleOpen(id)}
-            // onMouseEnter={() => console.log('enter')}
+            onMouseLeave={() => props.onToggleOpen(id)}
             onClick={() => props.onToggleOpen(id)}
             >
               {props.isOpen[id] && <InfoWindow onCloseClick={()=>props.onToggleOpen(id)}>

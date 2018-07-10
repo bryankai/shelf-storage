@@ -11,7 +11,7 @@ import { DateRangePicker, DayPickerRangeController } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 
 
-class LoginModal extends Component {
+class BookSpaceModal extends Component {
   state = {
     startDate: null,
     endDate: null,
@@ -131,4 +131,4 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({createOrder}, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(LoginModal)
+export default connect(null, mapDispatchToProps)(BookSpaceModal)

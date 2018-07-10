@@ -1,9 +1,10 @@
 import React, { Component }  from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {Row, Col} from 'react-materialize'
+import {Button, Row, Col} from 'react-materialize'
 import { fetchOneSpace } from '../actions/spaces';
 import BookSpaceModal from './BookSpaceModal'
+import BookPage from './BookPage'
 
 import '../styles/SpacePage.css';
 
@@ -26,7 +27,7 @@ class SpacePage extends Component {
       backgroundImage: `url(${img_link})`,
       backgroundPosition: '50% 50%',
       backgroundSize: 'cover',
-      height: '40vh'
+      height: '60vh'
     }
 
     const hostStyle = {
@@ -42,8 +43,8 @@ class SpacePage extends Component {
     return (
       <div>
         <div className='image-splash' style={imageStyle}></div>
-        <div className='space-main'>
-          <div className='space-details'>
+        <Row className='space-main'>
+          <Col s={12} m={6} l={8} className='space-details'>
             <Row className='title-row' style={titleRowStyle}>
               <Col s={9} className="space-title">
                 <h2>{name} </h2>
@@ -60,14 +61,11 @@ class SpacePage extends Component {
             <Row>
               <h5>{description}</h5>
             </Row>
-            <Row>
-              {/* <Button waves='light'
-                onClick={() => {$('#foo').modal('open')}}>Book
-              </Button> */}
-              <BookSpaceModal space={{id, name, price}}/>
-            </Row>
-          </div>
-        </div>
+          </Col>
+          <Col s={12} m={6} l={4} className='booking-col'>
+            <BookPage space={{id, name, price}}/>
+          </Col>
+        </Row>
       </div>
     )
   }

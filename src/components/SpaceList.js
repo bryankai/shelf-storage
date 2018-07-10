@@ -5,13 +5,13 @@ import {Row} from 'react-materialize'
 import Space from './Space'
 import '../styles/Home.css';
 
-import { fetchSpaces } from '../actions/spaces';
+import { submitSearch } from '../actions/spaces';
 
 class SpaceList extends Component {
 
   // Mounting Methods
   componentDidMount = () => {
-    this.props.fetchSpaces()
+    this.props.submitSearch()
   }
 
   render() {
@@ -42,7 +42,7 @@ const mapStateToProps = ({spaces, auth}) => {
 
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({fetchSpaces}, dispatch)
+  return bindActionCreators({submitSearch}, dispatch)
 }
 
 

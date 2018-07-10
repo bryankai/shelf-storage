@@ -1,45 +1,31 @@
-import { FETCH_SPACES_SUCCESS, FETCH_ONE_SPACE, SUBMIT_SEARCH } from '../actions/spaces'
+import { getDistance } from "../helper/helper";
+import { FETCH_SPACES_SUCCESS, FETCH_ONE_SPACE, UPDATE_SEARCH_LOCATION } from '../actions/spaces'
 
 // Helper Functions
-const filterForActiveSpaces = (action) => {
-  if(action.payload) {
-    const filteredSpaces =  action.payload.filter((space)=> space.active)
+const filterForActiveNearbySpaces = (payload) => {
+  if(payload) {
+    const filteredSpaces =  payload.spaces.filter((space, index)=> {
+      if(space.active) {
+        const spaceLocation = {lat: space.lat, lng: space.lng}
+        const distance = getDistance(spaceLocation, payload.searchLocation)
+        console.log(distance,payload.range)
+        if(distance<payload.range) {
+          console.log(index, distance, spaceLocation)
+          return true
+        }
+      }
+      return false
+    })
+    console.log('filteredSpaces',filteredSpaces)
     return filteredSpaces
   }
-  return action.payload
 }
-
-// const makeMarkerArr = (action) => {
-//   if(action.payload) {
-//     const markerArr =  action.payload.map((space)=> {
-//       return {
-//         position: {
-//           lat: 47.6579,
-//           lng: -122.3079},
-//         name: 'Marker 1',
-//       }
-//     })
-//     return markerArr
-//   }
-//   return action.payload
-// }
-//   }
-//   {
-//     markers : [,
-//     {
-//       position: {
-//         lat: 47.6579,
-//         lng: -122.3159},
-//       name: 'Marker 2'
-//     }]
-//   }
-// }
 
 // Reducers
 export const spaces = (state = [], action) => {
   switch(action.type){
     case FETCH_SPACES_SUCCESS:
-      return filterForActiveSpaces(action)
+      return filterForActiveNearbySpaces(action.payload)
     case FETCH_ONE_SPACE:
       return action.payload
     default:
@@ -50,7 +36,7 @@ export const spaces = (state = [], action) => {
 export const searchLocation = (state = null, action) => {
   console.log(action.payload)
   switch(action.type){
-    case SUBMIT_SEARCH:
+    case UPDATE_SEARCH_LOCATION:
     console.log('location action.payload')
       return action.payload
     default:
