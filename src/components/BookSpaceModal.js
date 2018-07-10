@@ -5,12 +5,19 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { createOrder } from '../actions/guests';
 
+
+import 'react-dates/initialize';
+import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
+import 'react-dates/lib/css/_datepicker.css';
+
+
 class LoginModal extends Component {
   state = {
     startDate: null,
     endDate: null,
     duration: null,
     totalCost: null,
+    focusedInput: null,
   };
 
   handleSubmit = (event, spaceId) => {
@@ -23,14 +30,14 @@ class LoginModal extends Component {
 
   // Need to add this in...
   handlePriceCalc = (price) => {
-    console.log('handlePrice', this.state.startDate, this.state.endDate)
+    console.log('handlePrice', this.state.endDate - this.state.startDate)
     if(this.state.startDate && this.state.endDate) {
       console.log('both exist')
       // NEED TO FIX FOR DIFFERENT MONTHS!
       console.log(typeof this.state.endDate)
-      const startDateVal = this.state.startDate.slice(0,2)
-      const endDateVal = this.state.endDate.slice(0,2)
-      const duration = endDateVal - startDateVal
+      // const startDateVal = this.state.startDate.slice(0,2)
+      // const endDateVal = this.state.endDate.slice(0,2)
+      const duration = (this.state.endDate-this.state.startDate)/86400000 // dividing by # of microseconds in a day
       const totalCost = duration*price
       const alert = duration<1
       this.setState({duration, totalCost, alert})
@@ -106,6 +113,15 @@ class LoginModal extends Component {
             </div>
           }
         </Row>
+          <DateRangePicker
+            startDateId="startDate"
+            endDateId="endDate"
+            startDate={this.state.startDate}
+            endDate={this.state.endDate}
+            onDatesChange={({ startDate, endDate }) => { this.setState({ startDate, endDate })}}
+            focusedInput={this.state.focusedInput}
+            onFocusChange={(focusedInput) => { this.setState({ focusedInput })}}
+          />
       </Modal>
     )
   }
