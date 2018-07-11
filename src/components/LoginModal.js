@@ -1,10 +1,9 @@
 
 import React, { Component }  from 'react';
-import {Modal, Button, Input, Row} from 'react-materialize'
+import {Modal, Button, Input} from 'react-materialize'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { createOrder } from '../actions/guests';
 import { userLogin } from '../actions/auth';
 
 class LoginModal extends Component {

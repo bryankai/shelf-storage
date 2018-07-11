@@ -16,9 +16,6 @@ class Results extends Component {
 
     return (
       <div>
-        <Row>
-
-        </Row>
         <Row style={shiftDown}>
           <Col s={6} m={6} l={8} id='spacelist-column'>
             <h4> Search Results </h4>

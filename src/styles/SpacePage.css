@@ -49,8 +49,9 @@
 }
 
 .DateInput .DateInput_input {
-  padding: 0 10px 0 10px;
+  margin: 0 10px 0 10px;
   margin-bottom: 5px;
+  width: 90%;
 }
 
 /* Calendar */

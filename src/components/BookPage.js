@@ -1,13 +1,11 @@
 import React, { Component }  from 'react';
 import { Button, Input, Row, Table} from 'react-materialize'
-
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { createOrder } from '../actions/guests';
-
-
+import { DateRangePicker } from 'react-dates';
+import LoginModal from './LoginModal'
 import 'react-dates/initialize';
-import { DateRangePicker, DayPickerRangeController } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 
 
@@ -76,14 +74,22 @@ class BookPage extends Component {
             </div>
           }
         </Row>
-        <Button className={this.state.duration<1 ? 'book-space-button disabled' : 'book-space-button'} waves='light' value="Book" onClick={event => this.handleSubmit(event, id)}>Book</Button>
+        {/* {this.props.auth.authorized ?
+          <Button className={this.state.duration<1 ? 'book-space-button disabled' : 'book-space-button'} waves='light' value="Book" onClick={event => this.handleSubmit(event, id)}>Book</Button>
+          : <LoginModal/>
+        } */}
+
       </div>
     )
   }
+}
+
+const mapStateToProps = ({auth}) => {
+  return {auth}
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({createOrder}, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(BookPage)
+export default connect(mapStateToProps, mapDispatchToProps)(BookPage)

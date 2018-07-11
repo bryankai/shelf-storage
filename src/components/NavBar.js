@@ -25,6 +25,12 @@ class NavBar extends Component {
         <NavItem className="nav-link" href="/results">
           Search
         </NavItem>
+        {this.props.auth.authorized
+          ? <NavItem className="nav-link" href="/guest/reservations">
+              Reservations
+            </NavItem>
+          : null
+        }
         {this.props.auth.authorized ?
         <NavItem onClick={this.props.guestLogout }>
           <div>Logout</div>

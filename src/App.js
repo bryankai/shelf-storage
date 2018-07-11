@@ -6,6 +6,7 @@ import NavBar from './components/NavBar'
 import Home from './components/Home'
 import Results from './components/Results'
 import SpacePage from './components/SpacePage'
+import GuestReservations from './components/GuestReservations'
 
 import './styles/App.css';
 
@@ -22,8 +23,8 @@ class App extends Component {
               )}/>
               <Route exact path='/home' component={Home}/>
               <Route exact path='/results' component={Results}/>
-              <Route exact path='/results' component={Results}/>
               <Route path='/spaces/:spaceId' component={SpacePage}/>
+              <Route exact path='/guest/reservations' component={GuestReservations}/>
             </Switch>
           </BrowserRouter>
         </div>

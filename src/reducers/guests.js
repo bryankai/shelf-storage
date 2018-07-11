@@ -1,20 +1,25 @@
 import { combineReducers } from 'redux';
-import { CREATE_ORDER } from '../actions/spaces'
+import { CREATE_ORDER } from '../actions/guests'
+import { FETCH_GUEST } from '../actions/guests'
+import { FETCH_GUEST_ORDERS } from '../actions/guests'
 
 // Reducers
-const orders = (state = [], action) => {
+export const guests = (state = [], action) => {
   switch(action.type){
-    case CREATE_ORDER:
-      return filterForActiveSpaces(action)
+    case FETCH_GUEST:
+      return action.payload
     default:
       return state
   }
 }
 
-
-
-const rootReducer = combineReducers({
-    orders,
-});
-
-export default rootReducer;
+export const orders = (state = [], action) => {
+  switch(action.type){
+    case FETCH_GUEST_ORDERS:
+      return action.payload
+    case CREATE_ORDER:
+      return action.payload
+    default:
+      return state
+  }
+}
