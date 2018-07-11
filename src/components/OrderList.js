@@ -24,8 +24,8 @@ class OrderList extends Component {
     })
 
     const orderListStyle = {
-      // display: 'flex',
-      // justifyContent: 'order-evenly',
+      display: 'flex',
+      justifyContent: 'order-evenly',
       flexWrap: 'wrap'
     }
 

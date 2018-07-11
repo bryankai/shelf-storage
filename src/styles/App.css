@@ -40,10 +40,23 @@
     margin-top: 10px;
 }
 
+.avatar-small {
+    vertical-align: middle;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+}
+
+.host-name {
+  font-size: 24px;
+  text-align: center;
+  margin: 0 10px 0 10px;
+}
+
 .center-center {
   display: flex;
   justify-content: center;
-  align-itmes: center;
+  align-items: center;
 }
 
 #space-card .card-image {
@@ -65,11 +78,6 @@
 
 #book-space-button-disabled{
   background-color: gray
-}
-
-.card-content div {
-  padding-bottom: 40px;
-  min-height: 100px;
 }
 
 /* ALERT */

@@ -32,12 +32,11 @@ class GuestReservations extends Component {
     const shiftDown = {
       margin: '70px',
     }
-    
+
     return (
-      <div>
-      <Row style={shiftDown}>
+      <div style={shiftDown}>
+        <h3> My Reservations </h3>
         <OrderList/>
-      </Row>
       </div>
     )
   }

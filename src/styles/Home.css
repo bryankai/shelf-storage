@@ -61,18 +61,10 @@
   background-size: cover;
 }
 
-
-
 .signup-subcontainer {
   width: 80%;
 }
 
 .buttons-box button {
   margin: 10px;
-}
-
-.column {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
 }

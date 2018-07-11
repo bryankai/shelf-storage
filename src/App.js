@@ -23,7 +23,7 @@ class App extends Component {
               )}/>
               <Route exact path='/home' component={Home}/>
               <Route exact path='/results' component={Results}/>
-              <Route path='/spaces/:spaceId' component={SpacePage}/>
+              <Route exact path='/spaces/:spaceId' component={SpacePage}/>
               <Route exact path='/guest/reservations' component={GuestReservations}/>
             </Switch>
           </BrowserRouter>

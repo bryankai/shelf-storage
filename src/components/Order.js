@@ -1,5 +1,6 @@
 import React, { Component }  from 'react';
-import {Card, CardTitle, Col} from 'react-materialize'
+import {Card, CardTitle, Col, Chip} from 'react-materialize'
+import moment from 'moment'
 
 class Order extends Component {
 
@@ -14,12 +15,9 @@ class Order extends Component {
     } = this.props.order
     console.log('Order',this.props.order)
 
-    const imgCropStyle = {
-      height: '100%',
-      width: '100%'
-      // overflow: 'hidden',
-      // display: 'flex',
-      // justifyContent: 'center'
+    const containerStyle = {
+      display: 'flex',
+      justifyContent: 'center'
     }
 
     const truncateString = (text, length=60) => {
@@ -30,18 +28,26 @@ class Order extends Component {
 
     const spacePageLink = `/spaces/${spaces_id}`
 
+    const newStartDate = (moment(start_date).format("ddd, MMM D"))
+    const newEndDate = (moment(end_date).format("ddd, MMM D YYYY"))
+    const timeRange = `${newStartDate} - ${newEndDate}`
+    // console.log(`${newStartDate} - ${newEndDate}`)
+
     return (
-      <div>
-        {/* <Col s={6} m={12} l={4} xl={3}>
-          <p>{this.props.order.name}</p>
-        </Col> */}
-        <Col m={7} s={12}>
+      <div style={containerStyle}>
+        <Col s={12} m={12} l={9}>
           <Card className='horizontal'  header={<CardTitle image={img_link}></CardTitle>} actions={[<a href={spacePageLink}>Space Details</a>]}>
-            <h4>{name}</h4>
-            <p>{address} {city},{state} {zip}</p>
-            <p>{start_date} - {end_date}</p>
-
-
+            <div className='host-info center-center'>
+              <img src={hostAvatar} alt="Avatar" className="avatar-small"/>
+              <div className='host-name center-center'>
+                {hostFirstName}
+              </div>
+            </div>
+            <h5>{name}</h5>
+            <p>{address}</p>
+            <p>{city},{state} {zip}</p>
+            <p>{size} sqft</p>
+            <p> {timeRange} </p>
           </Card>
         </Col>
       </div>

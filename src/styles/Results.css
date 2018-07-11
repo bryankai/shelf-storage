@@ -29,3 +29,7 @@
 input.location-search-input {
   padding-left: 10px;
 }
+
+.card-content div {
+  min-height: 100px;
+}
