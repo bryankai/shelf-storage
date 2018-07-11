@@ -45,6 +45,7 @@ class BookPage extends Component {
     const {id, name, price}  = this.props.space
     return (
       <div className='booking-container'>
+        <h5>${price} / day </h5>
         <div className='booking-instructions'>
           <div>Select Dates</div>
         </div>
@@ -67,7 +68,7 @@ class BookPage extends Component {
                   <tbody>
                     <tr>
                       <td className='table-col-1'>${price} x {this.state.duration} days</td>
-                      <td className='table-col-2'>${this.state.totalCost}</td>
+                      <td className='table-col-2'><b>${this.state.totalCost}</b></td>
                     </tr>
                   </tbody>
                 </Table>

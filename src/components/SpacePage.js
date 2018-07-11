@@ -17,10 +17,8 @@ class SpacePage extends Component {
   }
 
   render() {
-    console.log(this.props)
-    const {id, name, description, img_link, city, host_name, avatar, price,
-    // temp_control, access, size,  active,
-    // hosts_id, address, state, zip, deleted_at,
+    const {id, name, description, img_link, city, host_name, avatar, price, temp_control, access, size,
+    // active, hosts_id, address, state, zip, deleted_at,
     } = this.props.spaces
 
     const imageStyle = {
@@ -49,7 +47,19 @@ class SpacePage extends Component {
               <Col s={9} className="space-title">
                 <h2>{name} </h2>
                 <h4>{city}</h4>
-                <h5>${price} / day </h5>
+                <Row className='detail-container'>
+                  {temp_control?
+                    <Col s={4}>
+                    <p>Temp Controlled </p>
+                    </Col>
+                    : null }
+                  <Col s={4}>
+                    <p>Size: {size} sqft </p>
+                  </Col>
+                  <Col s={4}>
+                    <p>24/7 Access: {access} </p>
+                  </Col>
+                </Row>
               </Col>
               <Col s={3} className='center-center' style={hostStyle}>
                 <div className='host-details'>

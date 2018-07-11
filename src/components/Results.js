@@ -26,7 +26,7 @@ class Results extends Component {
           </Col>
           <Col s={6} m={6} l={4} id='map-column'>
             <SearchBar/>
-            <PlacesWithStandaloneSearchBox/>
+            {/* <PlacesWithStandaloneSearchBox/> */}
             <MapContainer />
           </Col>
         </Row>

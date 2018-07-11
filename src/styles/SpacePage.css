@@ -27,6 +27,7 @@
   display: flex;
   justify-content: space-around;
   font-size: 24px;
+  margin: 10px;
 }
 
 .DateRangePicker {
@@ -59,7 +60,13 @@
 
 
 /* Booking Details */
+#book-results {
+  width: 60%;
+}
 
+td {
+  text-align: center;
+}
 
 .table-col-1 {
   width: 60%;

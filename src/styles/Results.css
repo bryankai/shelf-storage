@@ -25,3 +25,7 @@
   z-index: 10;
   width: 100%;
 }
+
+input.location-search-input {
+  padding-left: 10px;
+}
