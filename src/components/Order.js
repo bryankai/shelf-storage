@@ -28,7 +28,7 @@ class Order extends Component {
       return text.length<=maxLength ? text : `${trimmedString}...`
     }
 
-    const orderPageLink = `/orders/${id}`
+    const spacePageLink = `/spaces/${spaces_id}`
 
     return (
       <div>
@@ -36,10 +36,14 @@ class Order extends Component {
           <p>{this.props.order.name}</p>
         </Col> */}
         <Col m={7} s={12}>
-          <Card horizontal header={<CardTitle image={img_link}></CardTitle>} actions={[<a href='#'>This is a link</a>]}>
-          <p>I am a very simple card. I am good at containing small bits of information</p>
-        </Card>
-      </Col>
+          <Card className='horizontal'  header={<CardTitle image={img_link}></CardTitle>} actions={[<a href={spacePageLink}>Space Details</a>]}>
+            <h4>{name}</h4>
+            <p>{address} {city},{state} {zip}</p>
+            <p>{start_date} - {end_date}</p>
+
+
+          </Card>
+        </Col>
       </div>
     )
   }

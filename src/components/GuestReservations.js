@@ -32,14 +32,10 @@ class GuestReservations extends Component {
     const shiftDown = {
       margin: '70px',
     }
-
-    const {id: guestId} = this.props.auth.user
-    console.log('orders', this.props.orders)
-
+    
     return (
       <div>
       <Row style={shiftDown}>
-        <p> Guest Profile </p>
         <OrderList/>
       </Row>
       </div>
