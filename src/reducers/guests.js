@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import { CREATE_ORDER } from '../actions/guests'
 import { FETCH_GUEST } from '../actions/guests'
 import { FETCH_GUEST_ORDERS } from '../actions/guests'

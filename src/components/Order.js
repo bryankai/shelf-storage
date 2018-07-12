@@ -13,7 +13,6 @@ class Order extends Component {
       // Host
       hosts_id, hostFirstName, hostLastName, hostAvatar
     } = this.props.order
-    console.log('Order',this.props.order)
 
     const containerStyle = {
       display: 'flex',

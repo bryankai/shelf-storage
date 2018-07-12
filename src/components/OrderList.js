@@ -15,9 +15,7 @@ class OrderList extends Component {
   }
 
   render() {
-    console.log(this.props.orders)
     const Orders = this.props.orders.map(order => {
-      console.log(order)
       return (
         <Order key={order.id} order={order}/>
       )

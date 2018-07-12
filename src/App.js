@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import {Modal} from 'react-materialize'
-
 import NavBar from './components/NavBar'
 import Home from './components/Home'
 import Results from './components/Results'
 import SpacePage from './components/SpacePage'
 import GuestReservations from './components/GuestReservations'
+import AuthenticatedRoute from './helper/AuthenticatedRoute'
+import { getUser } from './actions/auth';
 
 import './styles/App.css';
 
 class App extends Component {
+  componentDidMount(){
+    this.props.getUser()
+  }
   render() {
     return (
       <div className="App">
@@ -37,5 +43,9 @@ class App extends Component {
     );
   }
 }
+const mapStateToProps = ({auth}) => ({auth});
 
-export default App;
+
+const mapDispatchToProps = dispatch => bindActionCreators({ getUser }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

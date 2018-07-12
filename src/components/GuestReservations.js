@@ -5,17 +5,19 @@ import {Button, Row, Col} from 'react-materialize'
 
 import { fetchGuest } from '../actions/guests';
 import { fetchOrdersByGuestId } from '../actions/guests';
+import { withAuthentication } from '../helper/helper';
 
 import OrderList from './OrderList'
 
 class GuestReservations extends Component {
   //
   componentDidMount = async () => {
-    this.props.fetchGuest(1)
-    // this.props.fetchGuest(this.props.auth.user.id)
-    await this.props.fetchOrdersByGuestId(1)
+    // this.props.fetchGuest(this.props.auth.id)
+    this.props.fetchGuest(this.props.auth.user.id)
+    await this.props.fetchOrdersByGuestId(this.props.auth.user.id)
     // replace 1 with this.props.auth.user.id
-    console.log('orders', this.props.orders)
+    // console.log('orders', this.props.orders)
+    console.log(this.props.authState.id)
   }
   //
   render() {
@@ -43,9 +45,8 @@ class GuestReservations extends Component {
 }
 
 const mapStateToProps = ({guest, auth}) => {
-  return { auth}
+  return {auth}
 }
-
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({fetchGuest, fetchOrdersByGuestId}, dispatch)

@@ -1,5 +1,6 @@
 import React, { Component }  from 'react';
 import {Card, CardTitle, Col} from 'react-materialize'
+import {Link} from 'react-router-dom'
 
 class Space extends Component {
 
@@ -7,14 +8,6 @@ class Space extends Component {
     const {id, name, description, img_link,
       // hosts_id, address, city, state, zip, temp_control, access, size, price, active, deleted_at
     } = this.props.space
-
-    const imgCropStyle = {
-      height: '100%',
-      width: '100%'
-      // overflow: 'hidden',
-      // display: 'flex',
-      // justifyContent: 'center'
-    }
 
     const truncateString = (text, length=60) => {
       const maxLength = length;
@@ -28,9 +21,8 @@ class Space extends Component {
       <Col s={6} m={12} l={4} xl={3}>
         <Card className='medium'
           id='space-card'
-          // style={imgCropStyle}
           header={<CardTitle image={img_link} >{truncateString(name,21)}</CardTitle>}
-          actions={[<a key={id} href={spacePageLink}>See Details</a>]}>
+          actions={[<Link key={id} to={spacePageLink}>See Details</Link>]}>
           {truncateString(description, 50)}
         </Card>
       </Col>
