@@ -3,7 +3,6 @@ import {Row, Col} from 'react-materialize'
 import SpaceList from './SpaceList'
 import MapContainer from './MapContainer'
 import SearchBar from './SearchBar'
-import PlacesWithStandaloneSearchBox from './PlacesWithStandaloneSearchBox'
 
 import '../styles/Home.css';
 import '../styles/Results.css';
@@ -23,7 +22,6 @@ class Results extends Component {
           </Col>
           <Col s={6} m={6} l={4} id='map-column'>
             <SearchBar/>
-            {/* <PlacesWithStandaloneSearchBox/> */}
             <MapContainer />
           </Col>
         </Row>

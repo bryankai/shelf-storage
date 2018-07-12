@@ -4,14 +4,16 @@ import { bindActionCreators } from 'redux';
 import {Row} from 'react-materialize'
 import Order from './Order'
 import '../styles/Home.css';
-
+import { getUser } from '../actions/auth';
 import { fetchOrdersByGuestId } from '../actions/guests';
 
 class OrderList extends Component {
 
   // Mounting Methods
-  componentDidMount = () => {
-    this.props.fetchOrdersByGuestId()
+  componentDidMount = async () => {
+    // console.log('ORDER LIST',this.props.auth.user.id)
+    await this.props.getUser()
+    this.props.fetchOrdersByGuestId(this.props.auth.user.id)
   }
 
   render() {
@@ -40,7 +42,7 @@ const mapStateToProps = ({orders, auth}) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({fetchOrdersByGuestId}, dispatch)
+  return bindActionCreators({getUser, fetchOrdersByGuestId}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrderList)
