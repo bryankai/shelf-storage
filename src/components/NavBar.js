@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Navbar, NavItem} from 'react-materialize'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { NavLink } from 'react-router-dom'
 import { guestLogout } from '../actions/auth';
 import LoginModal from './LoginModal'
 
@@ -22,6 +23,7 @@ class NavBar extends Component {
     }
     return (
       <Navbar brand='Shelf' right style={navStyle}>
+        {/* <li><NavLink to="/home">Home2</NavLink></li> */}
         <NavItem className="nav-link" href="/results">
           Search
         </NavItem>

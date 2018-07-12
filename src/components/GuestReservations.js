@@ -12,11 +12,9 @@ import OrderList from './OrderList'
 class GuestReservations extends Component {
   //
   componentDidMount = async () => {
-    await this.props.getUser()
-    console.log('USER ID', this.props.auth.user.id)
-    this.props.fetchGuest(this.props.auth.user.id)
-
-
+    // await this.props.getUser()
+    // console.log('USER ID', this.props.auth.user.id)
+    // this.props.fetchGuest(this.props.auth.user.id)
   }
   //
   render() {
@@ -36,8 +34,9 @@ class GuestReservations extends Component {
 
     return (
       <div style={shiftDown}>
-        <h3> My Reservations </h3>
-        <OrderList/>
+      {this.props.auth.authorized
+        ? <OrderList/>
+        :null}
       </div>
     )
   }

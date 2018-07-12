@@ -19,10 +19,12 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <NavBar />
-        <div className='main'>
-          <BrowserRouter>
+      <BrowserRouter>
+        <div className="App">
+          <div className='header'>
+            <NavBar />
+          </div>
+          <div className='main'>
             <Switch>
               <Route exact path="/" render={() => (
                   <Redirect to="/home"/>
@@ -31,15 +33,20 @@ class App extends Component {
               <Route exact path='/results' component={Results}/>
               <Route exact path='/spaces/:spaceId' component={SpacePage}/>
               <Route exact path='/guest/reservations' component={GuestReservations}/>
+              {/* <Route exact path='/guest/reservations' render={() => (
+                this.props.auth.user.id
+                ? component={GuestReservations}
+                : <Redirect to="/home"/>
+              )}/> */}
             </Switch>
-          </BrowserRouter>
+          </div>
+          <Modal
+            id='foo'
+            header='Modal Header'>
+            Lorem ipsum dolor sit amet
+          </Modal>
         </div>
-        <Modal
-          id='foo'
-          header='Modal Header'>
-          Lorem ipsum dolor sit amet
-        </Modal>
-      </div>
+      </BrowserRouter>
     );
   }
 }
