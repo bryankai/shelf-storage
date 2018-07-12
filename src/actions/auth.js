@@ -23,6 +23,7 @@ export const userLogin = (email, password) => (
       return request('/auth/token');
     })
     .then(async response => {
+      console.log('userLogin action', response)
       await AuthenticationService.setAuthState(response.data);
       dispatch({
         type: USER_LOGIN_SUCCESS,
@@ -41,10 +42,10 @@ export const userLogin = (email, password) => (
 
 export const userSignup = (newUser) => (
   dispatch => {
-    console.log('auth userSignup',newUser)
     dispatch({type: USER_SIGNUP_PENDING});
     return request('/guests', 'post', newUser)
     .then(response => {
+      console.log('userSignup action',response)
       dispatch({
         type: USER_SIGNUP_SUCCESS,
         payload: response.data

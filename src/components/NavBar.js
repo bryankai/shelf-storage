@@ -4,12 +4,19 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { NavLink } from 'react-router-dom'
 import { guestLogout } from '../actions/auth';
+import { fetchGuest } from '../actions/guests';
+import { getUser } from '../actions/auth';
 import LoginModal from './LoginModal'
 
 class NavBar extends Component {
   // For testing until I set up authState
   state= {
     authState: false
+  }
+
+  componentDidMount = async () => {
+    await this.props.getUser()
+    this.props.fetchGuest(this.props.auth.user.id)
   }
 
   render () {
@@ -40,14 +47,19 @@ class NavBar extends Component {
           <LoginModal/>
         </NavItem>
         }
+        {this.props.guests.avatar
+          ? <li><img src={this.props.guests.avatar} alt="Avatar" className="avatar-xsmall"/></li>
+          : null
+        }
+
       </Navbar>
     )
   }
 }
 
-const mapStateToProps = ({auth}) => ({auth});
+const mapStateToProps = ({auth, guests}) => ({auth, guests});
 
 
-const mapDispatchToProps = dispatch => bindActionCreators({ guestLogout }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ guestLogout, fetchGuest, getUser }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

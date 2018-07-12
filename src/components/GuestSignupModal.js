@@ -12,6 +12,7 @@ class GuestSignupModal extends Component {
       last_name: "",
       email: "",
       password: "",
+      avatar: null,
       signupType: 'guest' //guest || host
     };
   }
@@ -72,6 +73,10 @@ class GuestSignupModal extends Component {
             <Input type="password" label="Password" s={12} required
               onChange={event =>
                 this.setState({password: event.target.value})}
+            />
+            <Input label="Avatar URL" s={12} required
+              onChange={event =>
+                this.setState({avatar: event.target.value})}
             />
           </form>
         <div className={ this.props.auth.showSignupError ? 'signup-auth-error' : 'signup-hide-auth-error' }>
