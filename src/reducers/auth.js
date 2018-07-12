@@ -17,7 +17,6 @@ let initialState = {
   showLoginError: false,
   showSignupError: false,
   authorized: false,
-  opponents: []
 };
 
 export const auth = (state = initialState, action) => {

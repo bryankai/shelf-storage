@@ -32,6 +32,13 @@
   top: 64px;
 }
 
+.preloader {
+  margin-top: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .avatar {
     vertical-align: middle;
     width: 75px;
@@ -82,10 +89,6 @@
 
 #space-card .card-title {
   padding: 12px;
-}
-
-#book-space-button-disabled{
-  background-color: gray
 }
 
 /* ALERT */

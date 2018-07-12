@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import {Modal} from 'react-materialize'
+import {Modal, Preloader} from 'react-materialize'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
 import Results from './components/Results'
@@ -19,7 +19,7 @@ class App extends Component {
   }
   render() {
     if(this.props.auth.isLoading)
-      return <div>Loading...</div>
+      return <div className='preloader'><Preloader size='big'/></div>
 
     return (
       <BrowserRouter>

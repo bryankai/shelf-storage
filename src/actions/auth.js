@@ -45,7 +45,6 @@ export const userSignup = (newUser) => (
     dispatch({type: USER_SIGNUP_PENDING});
     return request('/guests', 'post', newUser)
     .then(response => {
-      console.log('userSignup action',response)
       dispatch({
         type: USER_SIGNUP_SUCCESS,
         payload: response.data

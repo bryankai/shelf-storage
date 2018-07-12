@@ -2,6 +2,7 @@ import React, { Component }  from 'react';
 import { Button, Input, Row, Table} from 'react-materialize'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { Link } from 'react-router-dom'
 import { createOrder } from '../actions/guests';
 import { DateRangePicker } from 'react-dates';
 import LoginModal from './LoginModal'
@@ -18,6 +19,8 @@ class BookPage extends Component {
     focusedInput: null,
   };
 
+
+  // Component Methods
   handleSubmit = (event, spaceId) => {
     event.preventDefault()
     const guestId = 1 //Later, grab from authState
@@ -33,6 +36,12 @@ class BookPage extends Component {
     }
   }
 
+  handleRedirect = () => {
+    return <Link to="/guests/reservations"/>
+  }
+
+
+  // Lifecycle Methods
   componentDidUpdate =  (prevProps, prevState) => {
     if(prevState.startDate!==this.state.startDate || prevState.endDate!==this.state.endDate) {
       this.handlePriceCalc(this.props.space.price)
@@ -41,6 +50,25 @@ class BookPage extends Component {
 
   render() {
     const {id, name, price}  = this.props.space
+
+    const bookButtonOption = () => {
+      let buttonClass
+      if(this.props.auth.authorized) {
+        if(this.props.orders.orderComplete) {
+          return <Link to="/guest/reservations"><Button className='book-space-button' waves='light' value="Order Details">Order Details</Button></Link>
+        } else {
+          if(this.state.duration<1) {
+            buttonClass = 'book-space-button disabled'
+          } else {
+            buttonClass = 'book-space-button'
+          }
+          return <Button className={buttonClass} waves='light' value="Book" onClick={event => this.handleSubmit(event, id)}>Book</Button>
+        }
+      } else {
+        return <Button><LoginModal/></Button>
+      }
+    }
+
     return (
       <div className='booking-container'>
         <h5>${price} / day </h5>
@@ -74,18 +102,18 @@ class BookPage extends Component {
             </div>
           }
         </Row>
-        {/* {this.props.auth.authorized ?
-          <Button className={this.state.duration<1 ? 'book-space-button disabled' : 'book-space-button'} waves='light' value="Book" onClick={event => this.handleSubmit(event, id)}>Book</Button>
-          : <LoginModal/>
+        {/* {this.props.auth.authorized
+          ? <Button className={this.state.duration<1 ? 'book-space-button disabled' : 'book-space-button'} waves='light' value="Book" onClick={event => this.handleSubmit(event, id)}>Book</Button>
+          : <Button><LoginModal/></Button>
         } */}
-
+        {bookButtonOption()}
       </div>
     )
   }
 }
 
-const mapStateToProps = ({auth}) => {
-  return {auth}
+const mapStateToProps = ({auth, orders}) => {
+  return {auth, orders}
 }
 
 const mapDispatchToProps = (dispatch) => {

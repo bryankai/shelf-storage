@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {Row} from 'react-materialize'
+import {Preloader, Row} from 'react-materialize'
 import Space from './Space'
 import '../styles/Home.css';
 
@@ -15,8 +15,10 @@ class SpaceList extends Component {
   }
 
   render() {
-    console.log(this.props.spaces)
-    const Spaces = this.props.spaces.map(space => {
+    if(this.props.auth.isLoading)
+      return <div className='preloader'><Preloader size='big'/></div>
+
+    const Spaces = this.props.spaces.spaces.map(space => {
       return (
         <Space key={space.id} space={space}/>
       )
@@ -25,7 +27,7 @@ class SpaceList extends Component {
     const spaceListStyle = {
       // display: 'flex',
       // justifyContent: 'space-evenly',
-      flexWrap: 'wrap'
+      // flexWrap: 'wrap'
     }
 
     return (

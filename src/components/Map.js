@@ -34,7 +34,7 @@ const Map = compose(
     center={props.searchLocation || { lat: 47.6599, lng: -122.3099 }}
   >
     {props.isMarkerShown &&
-      props.spaces.map((space, id) => {
+      props.spaces.spaces.map((space, id) => {
         const position = {lat: space.lat, lng: space.lng}
         return (
           <Marker

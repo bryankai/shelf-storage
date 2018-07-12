@@ -17,7 +17,7 @@ export const orders = (state = [], action) => {
     case FETCH_GUEST_ORDERS:
       return action.payload
     case CREATE_ORDER:
-      return action.payload
+      return {...action.payload, orderComplete: true}
     default:
       return state
   }
