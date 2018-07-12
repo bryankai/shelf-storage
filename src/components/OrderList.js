@@ -25,9 +25,10 @@ class OrderList extends Component {
     })
 
     const orderListStyle = {
+      width: '80%',
       display: 'flex',
-      justifyContent: 'order-evenly',
-      flexWrap: 'wrap'
+      justifyContent: 'center',
+      flexDirection: 'column'
     }
 
     return (

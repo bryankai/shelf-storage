@@ -4,8 +4,8 @@ import { bindActionCreators } from 'redux';
 import { Redirect } from 'react-router-dom'
 import { getUser } from '../actions/auth';
 import { fetchGuest } from '../actions/guests';
-
 import OrderList from './OrderList'
+import '../styles/Reservations.css';
 
 class GuestReservations extends Component {
 

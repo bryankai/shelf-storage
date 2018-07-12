@@ -32,7 +32,7 @@ class Order extends Component {
 
     return (
       // <div style={containerStyle}>
-        <Col s={12} m={12} l={9} key={id}>
+        <Col s={12} m={12} l={12} key={id}>
           <Card key={id} className='orders-card horizontal'  header={<CardTitle image={img_link}></CardTitle>}
           // actions={[<a href={spacePageLink}>Space Details</a>]}
           >
