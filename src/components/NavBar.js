@@ -9,24 +9,20 @@ import { getUser } from '../actions/auth';
 import LoginModal from './LoginModal'
 
 class NavBar extends Component {
-  // For testing until I set up authState
-  state= {
-    authState: false
-  }
 
   componentDidMount = async () => {
     // await this.props.getUser()
-    this.props.fetchGuest(this.props.auth.user.id)
+    if(this.props.auth.user.id) {
+      this.props.fetchGuest(this.props.auth.user.id)
+    }
   }
 
   render () {
-    // Style to fix nav NOT WORKING
-    console.log(this.props.auth)
     const navStyle = {
       position: 'fixed', /* Set the navbar to fixed position */
       top: '0', /* Position the navbar at the top of the page */
       width: '100%', /* Full width */
-      zIndex: '999'
+      zIndex: '10'
     }
 
     return (
@@ -39,11 +35,8 @@ class NavBar extends Component {
           : null
         }
         {this.props.auth.authorized ?
-        // <li><NavLink to="/results">Search</NavLink></li>
         <li>
-          <NavLink onClick={this.props.guestLogout}
-            to="/home"
-          >
+          <NavLink onClick={this.props.guestLogout}to="/home">
             <div>Logout</div>
           </NavLink>
         </li>

@@ -40,7 +40,6 @@ class BookPage extends Component {
     return <Link to="/guests/reservations"/>
   }
 
-
   // Lifecycle Methods
   componentDidUpdate =  (prevProps, prevState) => {
     if(prevState.startDate!==this.state.startDate || prevState.endDate!==this.state.endDate) {
@@ -102,10 +101,6 @@ class BookPage extends Component {
             </div>
           }
         </Row>
-        {/* {this.props.auth.authorized
-          ? <Button className={this.state.duration<1 ? 'book-space-button disabled' : 'book-space-button'} waves='light' value="Book" onClick={event => this.handleSubmit(event, id)}>Book</Button>
-          : <Button><LoginModal/></Button>
-        } */}
         {bookButtonOption()}
       </div>
     )

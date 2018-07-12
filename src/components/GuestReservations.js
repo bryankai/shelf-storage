@@ -11,28 +11,12 @@ import { withAuthentication } from '../helper/helper';
 import OrderList from './OrderList'
 
 class GuestReservations extends Component {
-  //
-  state ={
-    toHome: true,
-  }
 
   componentDidMount = async () => {
-    // await this.props.getUser()
-    // console.log('USER ID', this.props.auth.user.id)
     this.props.fetchGuest(this.props.auth.user.id)
   }
-  //
+
   render() {
-  //
-  //   const hostStyle = {
-  //     padding: '20px'
-  //   }
-  //
-  //   const titleRowStyle = {
-  //     display: 'flex',
-  //     justifyContent: 'space-evenly',
-  //     alignItems: 'center'
-  //   }
     const shiftDown = {
       margin: '70px',
     }
@@ -45,11 +29,7 @@ class GuestReservations extends Component {
 
     return (
       <div style={shiftDown}>
-      {/* {this.props.auth.authorized
-        ? */}
         <OrderList/>
-        {/* <p>hello world</p> */}
-        {/* :null} */}
       </div>
     )
   }

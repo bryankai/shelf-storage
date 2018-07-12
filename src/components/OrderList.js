@@ -21,13 +21,9 @@ class OrderList extends Component {
   }
 
   render() {
-    // this.props.getUser()
     const Orders = this.props.orders.map(order => {
-      return (
-        <Order key={order.id} order={order}/>
-      )
+      return <Order key={order.id} order={order}/>
     })
-    // console.log(this.props.orders)
 
     const orderListStyle = {
       display: 'flex',

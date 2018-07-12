@@ -40,8 +40,6 @@ const Map = compose(
           <Marker
             key={id}
             position={position}
-            // onMouseOver={() => props.onToggleOpen(id)}
-            onMouseLeave={() => props.onToggleOpen(id)}
             onClick={() => props.onToggleOpen(id)}
             >
               {props.isOpen[id] && <InfoWindow onCloseClick={()=>props.onToggleOpen(id)}>
@@ -49,8 +47,7 @@ const Map = compose(
               </InfoWindow>}
             </Marker>
           )
-      }
-    )
+      })
     }
   </GoogleMap>
 )
