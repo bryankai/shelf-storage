@@ -1,5 +1,5 @@
 import React, { Component }  from 'react';
-import {Card, CardTitle, Col, Chip} from 'react-materialize'
+import {Card, CardTitle, Col} from 'react-materialize'
 import moment from 'moment'
 
 class Order extends Component {
@@ -26,16 +26,16 @@ class Order extends Component {
     }
 
     const spacePageLink = `/spaces/${spaces_id}`
-
     const newStartDate = (moment(start_date).format("ddd, MMM D"))
     const newEndDate = (moment(end_date).format("ddd, MMM D YYYY"))
     const timeRange = `${newStartDate} - ${newEndDate}`
-    // console.log(`${newStartDate} - ${newEndDate}`)
 
     return (
-      <div style={containerStyle}>
-        <Col s={12} m={12} l={9}>
-          <Card className='horizontal'  header={<CardTitle image={img_link}></CardTitle>} actions={[<a href={spacePageLink}>Space Details</a>]}>
+      // <div style={containerStyle}>
+        <Col s={12} m={12} l={9} key={id}>
+          <Card key={id} className='orders-card horizontal'  header={<CardTitle image={img_link}></CardTitle>}
+          // actions={[<a href={spacePageLink}>Space Details</a>]}
+          >
             <div className='host-info center-center'>
               <img src={hostAvatar} alt="Avatar" className="avatar-small"/>
               <div className='host-name center-center'>
@@ -49,7 +49,7 @@ class Order extends Component {
             <p> {timeRange} </p>
           </Card>
         </Col>
-      </div>
+      // </div>
     )
   }
 }

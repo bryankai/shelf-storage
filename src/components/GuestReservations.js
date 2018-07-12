@@ -2,11 +2,8 @@ import React, { Component }  from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Redirect } from 'react-router-dom'
-import {Button, Row, Col} from 'react-materialize'
 import { getUser } from '../actions/auth';
 import { fetchGuest } from '../actions/guests';
-import { fetchOrdersByGuestId } from '../actions/guests';
-import { withAuthentication } from '../helper/helper';
 
 import OrderList from './OrderList'
 

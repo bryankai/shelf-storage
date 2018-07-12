@@ -1,7 +1,7 @@
 import React, { Component }  from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {Button, Row, Col} from 'react-materialize'
+import {Row, Col} from 'react-materialize'
 import { fetchOneSpace } from '../actions/spaces';
 // import BookSpaceModal from './BookSpaceModal'
 import BookPage from './BookPage'

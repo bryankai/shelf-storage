@@ -15,7 +15,6 @@ export const GUEST_LOGOUT = 'GUEST_LOGOUT';
 
 export const userLogin = (email, password) => (
   dispatch => {
-    // console.log(email, password)
     dispatch({type: USER_LOGIN_PENDING});
     return request('/auth/token', 'post', {email, password})
     .then(response => {
@@ -23,7 +22,6 @@ export const userLogin = (email, password) => (
       return request('/auth/token');
     })
     .then(async response => {
-      console.log('userLogin action', response)
       await AuthenticationService.setAuthState(response.data);
       dispatch({
         type: USER_LOGIN_SUCCESS,

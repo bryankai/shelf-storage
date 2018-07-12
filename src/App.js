@@ -8,7 +8,6 @@ import Home from './components/Home'
 import Results from './components/Results'
 import SpacePage from './components/SpacePage'
 import GuestReservations from './components/GuestReservations'
-import AuthenticatedRoute from './helper/AuthenticatedRoute'
 import { getUser } from './actions/auth';
 
 import './styles/App.css';
@@ -36,11 +35,6 @@ class App extends Component {
               <Route exact path='/results' component={Results}/>
               <Route exact path='/spaces/:spaceId' component={SpacePage}/>
               <Route exact path='/guest/reservations' component={GuestReservations}/>
-              {/* <Route exact path='/guest/reservations' render={() => (
-                this.props.auth.user.id
-                ? <Component={GuestReservations}/>
-                : <Redirect to="/home"/>
-              )}/> */}
             </Switch>
           </div>
           <Modal

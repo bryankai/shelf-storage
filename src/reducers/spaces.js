@@ -14,15 +14,12 @@ const filterForActiveNearbySpaces = (payload) => {
       if(space.active) {
         const spaceLocation = {lat: space.lat, lng: space.lng}
         const distance = getDistance(spaceLocation, payload.searchLocation)
-        console.log(distance,payload.range)
         if(distance<payload.range) {
-          console.log(index, distance, spaceLocation)
           return true
         }
       }
       return false
     })
-    console.log('filteredSpaces',filteredSpaces)
     return filteredSpaces
   }
 }
@@ -50,13 +47,10 @@ export const spaces = (state = spacesInitialState, action) => {
 }
 
 export const searchLocation = (state = null, action) => {
-  console.log(action.payload)
   switch(action.type){
     case UPDATE_SEARCH_LOCATION:
-    console.log('location action.payload')
       return action.payload
     default:
-      console.log('location state')
       return state
   }
 }

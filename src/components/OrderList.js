@@ -15,7 +15,6 @@ class OrderList extends Component {
     // await this.props.getUser()
     console.log('OrderList did mount')
     if(this.props.auth.user.id) {
-      console.log('fetch orders')
       this.props.fetchOrdersByGuestId(this.props.auth.user.id)
     }
   }

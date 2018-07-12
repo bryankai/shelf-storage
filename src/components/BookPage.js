@@ -1,5 +1,5 @@
 import React, { Component }  from 'react';
-import { Button, Input, Row, Table} from 'react-materialize'
+import { Button, Row, Table} from 'react-materialize'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Link } from 'react-router-dom'
@@ -48,7 +48,7 @@ class BookPage extends Component {
   }
 
   render() {
-    const {id, name, price}  = this.props.space
+    const {id, price}  = this.props.space
 
     const bookButtonOption = () => {
       let buttonClass
