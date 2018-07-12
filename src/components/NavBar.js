@@ -23,17 +23,15 @@ class NavBar extends Component {
     }
     return (
       <Navbar brand='Shelf' right style={navStyle}>
-        {/* <li><NavLink to="/home">Home2</NavLink></li> */}
-        <NavItem className="nav-link" href="/results">
-          Search
-        </NavItem>
+        {/* <li>Welcome, {this.props.auth.user.name}</li> */}
+        <li><NavLink to="/home">Home</NavLink></li>
+        <li><NavLink to="/results">Search</NavLink></li>
         {this.props.auth.authorized
-          ? <NavItem className="nav-link" href="/guest/reservations">
-              Reservations
-            </NavItem>
+          ? <li><NavLink to="/guest/reservations">Reservations</NavLink></li>
           : null
         }
         {this.props.auth.authorized ?
+        // <li><NavLink to="/results">Search</NavLink></li>
         <NavItem onClick={this.props.guestLogout }>
           <div>Logout</div>
         </NavItem>

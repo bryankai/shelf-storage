@@ -123,10 +123,23 @@ div #book-results {
 }
 
 .login-hide-auth-error {
-  visibility:hidden;
+  visibility: hidden;
 }
 
 .login-auth-error {
+  /* margin-bottom: 5px; */
+  text-align: center;
+  color: red;
+}
+
+/* Signup */
+
+
+.signup-hide-auth-error {
+  visibility: hidden;
+}
+
+.signup-auth-error {
   /* margin-bottom: 5px; */
   text-align: center;
   color: red;

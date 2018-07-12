@@ -19,7 +19,7 @@ class LoginModal extends Component {
     const isAuthenticated = await this.props.userLogin(this.state.email, this.state.password)
     console.log(isAuthenticated)
     if (isAuthenticated) {
-      window.$('#myModal').modal('close');
+      window.$('#loginModal').modal('close');
       window.$('#materialize-modal-overlay-1').css('opacity', '0')
     }
   };
@@ -28,12 +28,13 @@ class LoginModal extends Component {
     const modalStyle = {
       justifyContent: 'center',
       height: '330px',
+      width: '550px'
     }
 
     return (
       <Modal style={modalStyle}
         header='Login'
-        id='myModal'
+        id='loginModal'
         fixedFooter
         actions={
           <div className='modal-footer-buttons'>
@@ -55,7 +56,7 @@ class LoginModal extends Component {
               onChange={event =>
                 this.setState({email: event.target.value})}
             />
-            <Input type="password" label="password" s={12}
+            <Input type="password" label="Password" s={12}
               onChange={event =>
                 this.setState({password: event.target.value})}
             />

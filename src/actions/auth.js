@@ -39,16 +39,17 @@ export const userLogin = (email, password) => (
   }
 );
 
-export const userSignup = (newUser, history) => (
+export const userSignup = (newUser) => (
   dispatch => {
+    console.log('auth userSignup',newUser)
     dispatch({type: USER_SIGNUP_PENDING});
-    request('/users', 'post', newUser)
+    return request('/guests', 'post', newUser)
     .then(response => {
       dispatch({
         type: USER_SIGNUP_SUCCESS,
         payload: response.data
       });
-      history.push('/login');
+      return true
     })
     .catch(error => {
       dispatch({

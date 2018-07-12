@@ -4,6 +4,8 @@ import '../styles/Home.css';
 import search from '../assets/flat/search.png'
 import reserve from '../assets/flat/reserve.png'
 import move from '../assets/flat/move.png'
+import LoginModal from './LoginModal'
+import GuestSignupModal from './GuestSignupModal'
 
 class Home extends Component {
   render() {
@@ -53,13 +55,14 @@ class Home extends Component {
             <Row className="buttons-box">
               <Col s={12} m={6} className='guest-column'>
                 <h3>Become a Guest</h3>
-                <Button waves='light' className='signup-button' form="search-form" value="Signup" s={12}>Signup</Button>
-                <Button waves='light' className='login-button'  form="search-form" value="Login" s={12}>Login</Button>
+                <GuestSignupModal/>
+                <Button waves='light' className='login-button' value="Login" s={6}><LoginModal/></Button>
+
               </Col>
               <Col s={12} m={6} className='host column'>
                 <h3>Become a Host</h3>
-                <Button waves='light' className='signup-button'  value="Signup" s={12}>Signup</Button>
-                <Button waves='light' className='login-button'   value="Login" s={12}>Login</Button>
+                <Button waves='light' className='signup-button'  value="Signup" s={6}>Host Sign Up</Button>
+                <Button waves='light' className='login-button'   value="Login" s={6}><LoginModal/></Button>
               </Col>
             </Row>
           </div>
