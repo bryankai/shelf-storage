@@ -18,6 +18,9 @@ class App extends Component {
     this.props.getUser()
   }
   render() {
+    if(this.props.auth.isLoading)
+      return <div>Loading...</div>
+
     return (
       <BrowserRouter>
         <div className="App">
@@ -35,7 +38,7 @@ class App extends Component {
               <Route exact path='/guest/reservations' component={GuestReservations}/>
               {/* <Route exact path='/guest/reservations' render={() => (
                 this.props.auth.user.id
-                ? component={GuestReservations}
+                ? <Component={GuestReservations}/>
                 : <Redirect to="/home"/>
               )}/> */}
             </Switch>

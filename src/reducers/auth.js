@@ -12,7 +12,7 @@ import {
 
 
 let initialState = {
-  isLoading: false,
+  isLoading: true,
   user: {},
   showLoginError: false,
   showSignupError: false,

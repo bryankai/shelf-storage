@@ -3,6 +3,7 @@ import {Modal, Button, Input} from 'react-materialize'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { userLogin } from '../actions/auth';
+import { getUser } from '../actions/auth';
 
 class LoginModal extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class LoginModal extends Component {
     if (isAuthenticated) {
       window.$('#loginModal').modal('close');
       window.$('#materialize-modal-overlay-1').css('opacity', '0')
+      // this.props.getUser(this.props.auth.user.id)
     }
   };
 
@@ -71,6 +73,6 @@ class LoginModal extends Component {
 
 const mapStateToProps = ({auth}) => ({auth});
 
-const mapDispatchToProps = dispatch => (bindActionCreators({userLogin}, dispatch));
+const mapDispatchToProps = dispatch => (bindActionCreators({userLogin, getUser}, dispatch));
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginModal);

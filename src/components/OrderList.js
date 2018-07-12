@@ -12,8 +12,10 @@ class OrderList extends Component {
   // Mounting Methods
   componentDidMount = async () => {
     // console.log('ORDER LIST',this.props.auth.user.id)
-    await this.props.getUser()
-    this.props.fetchOrdersByGuestId(this.props.auth.user.id)
+    // await this.props.getUser()
+    if(this.props.auth.user.id) {
+      this.props.fetchOrdersByGuestId(this.props.auth.user.id)
+    }
   }
 
   render() {

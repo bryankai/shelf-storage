@@ -15,7 +15,7 @@ class NavBar extends Component {
   }
 
   componentDidMount = async () => {
-    await this.props.getUser()
+    // await this.props.getUser()
     this.props.fetchGuest(this.props.auth.user.id)
   }
 
@@ -28,6 +28,7 @@ class NavBar extends Component {
       width: '100%', /* Full width */
       zIndex: '999'
     }
+
     return (
       <Navbar brand='Shelf' right style={navStyle}>
         {/* <li>Welcome, {this.props.auth.user.name}</li> */}
@@ -39,15 +40,19 @@ class NavBar extends Component {
         }
         {this.props.auth.authorized ?
         // <li><NavLink to="/results">Search</NavLink></li>
-        <NavItem onClick={this.props.guestLogout }>
-          <div>Logout</div>
-        </NavItem>
+        <li>
+          <NavLink onClick={this.props.guestLogout}
+            to="/home"
+          >
+            <div>Logout</div>
+          </NavLink>
+        </li>
         :
         <NavItem>
           <LoginModal/>
         </NavItem>
         }
-        {this.props.guests.avatar
+        {this.props.auth.authorized
           ? <li><img src={this.props.guests.avatar} alt="Avatar" className="avatar-xsmall"/></li>
           : null
         }

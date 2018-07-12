@@ -1,6 +1,7 @@
 import React, { Component }  from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Redirect } from 'react-router-dom'
 import {Button, Row, Col} from 'react-materialize'
 import { getUser } from '../actions/auth';
 import { fetchGuest } from '../actions/guests';
@@ -11,6 +12,10 @@ import OrderList from './OrderList'
 
 class GuestReservations extends Component {
   //
+  state ={
+    toHome: true,
+  }
+
   componentDidMount = async () => {
     // await this.props.getUser()
     // console.log('USER ID', this.props.auth.user.id)
@@ -32,11 +37,19 @@ class GuestReservations extends Component {
       margin: '70px',
     }
 
+    console.log('guestRes',this.props.auth.authorized);
+
+    if(!this.props.auth.authorized) {
+      return <Redirect to="/"/>
+    }
+
     return (
       <div style={shiftDown}>
-      {this.props.auth.authorized
-        ? <OrderList/>
-        :null}
+      {/* {this.props.auth.authorized
+        ? */}
+        <OrderList/>
+        {/* <p>hello world</p> */}
+        {/* :null} */}
       </div>
     )
   }
