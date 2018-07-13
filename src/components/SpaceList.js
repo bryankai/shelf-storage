@@ -11,11 +11,14 @@ class SpaceList extends Component {
 
   // Mounting Methods
   componentDidMount = () => {
-    this.props.submitSearch()
+    if(this.props.spaces.isLoading) {
+      this.props.submitSearch()
+    }
+    console.log('SpaceList', this.props.spaces)
   }
 
   render() {
-    if(this.props.auth.isLoading)
+    if(this.props.spaces.isLoading)
       return <div className='preloader'><Preloader size='big'/></div>
 
     const Spaces = this.props.spaces.spaces.map(space => {

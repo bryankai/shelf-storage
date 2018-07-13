@@ -1,5 +1,6 @@
 import React, { Component }  from 'react';
-import {Card, CardTitle, Col} from 'react-materialize'
+import { Link } from 'react-router-dom'
+import { Card, CardTitle, Col } from 'react-materialize'
 import moment from 'moment'
 
 class Order extends Component {
@@ -42,11 +43,11 @@ class Order extends Component {
                 {hostFirstName}
               </div>
             </div>
-            <h5>{name}</h5>
+            <h5><Link to={spacePageLink} >{name}</Link></h5>
+            <h6> {timeRange} </h6>
             <p>{address}</p>
             <p>{city},{state} {zip}</p>
-            <p>{size} sqft</p>
-            <p> {timeRange} </p>
+            <h6>{size} sqft</h6>
           </Card>
         </Col>
       // </div>

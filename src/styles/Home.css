@@ -38,6 +38,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 50px 0 50px 0;
 }
 
 .steps-col {

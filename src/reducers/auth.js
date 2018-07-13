@@ -20,7 +20,6 @@ let initialState = {
 };
 
 export const auth = (state = initialState, action) => {
-  console.log('auth reducer',state)
   switch (action.type) {
     case USER_LOGIN_PENDING:
       return {...state, isLoading: true};

@@ -18,8 +18,6 @@ class GuestReservations extends Component {
       margin: '70px',
     }
 
-    console.log('guestRes',this.props.auth.authorized);
-
     if(!this.props.auth.authorized) {
       return <Redirect to="/"/>
     }

@@ -6,6 +6,7 @@ import reserve from '../assets/flat/reserve.png'
 import move from '../assets/flat/move.png'
 import LoginModal from './LoginModal'
 import GuestSignupModal from './GuestSignupModal'
+import HomeSearchBar from './HomeSearchBar'
 
 class Home extends Component {
   render() {
@@ -17,10 +18,12 @@ class Home extends Component {
               <h3><b>Find storage in your area</b></h3>
             </Row>
             <Row className="search-row">
-              <form className='search-form' id='search-form'  s={8}>
+              {/* <form className='search-form' id='search-form'  s={8}>
                 <Input className="search-input" placeholder="City or Zip"/>
               </form>
-               <Button waves='light' className='search-button' type="submit" form="search-form" value="Search" s={2}>Search</Button>
+               <Button waves='light' className='search-button' type="submit" form="search-form" value="Search" s={2}>Search</Button> */}
+               <HomeSearchBar/>
+
             </Row>
           </div>
         </div>
