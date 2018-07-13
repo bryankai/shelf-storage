@@ -1,5 +1,5 @@
 import React, { Component }  from 'react';
-import {Modal, Button, Input} from 'react-materialize'
+import {Modal, Button, Input, Row, Col} from 'react-materialize'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { userLogin } from '../actions/auth';
@@ -17,8 +17,12 @@ class LoginModal extends Component {
 
   handleLogin = async (event) => {
     event.preventDefault()
-    const isAuthenticated = await this.props.userLogin(this.state.email, this.state.password)
-    console.log(isAuthenticated)
+    let isAuthenticated = null
+    if (this.state.loginType=='guest') {
+      isAuthenticated = await this.props.userLogin(this.state.email, this.state.password)
+    } else if (this.state.loginType=='host') {
+      isAuthenticated = await this.props.hostLogin(this.state.email, this.state.password)
+    }
     if (isAuthenticated) {
       window.$('#loginModal').modal('close');
       window.$('#materialize-modal-overlay-1').css('opacity', '0')
@@ -26,10 +30,12 @@ class LoginModal extends Component {
     }
   };
 
+
+
   render() {
     const modalStyle = {
       justifyContent: 'center',
-      height: '330px',
+      height: '380px',
       width: '550px'
     }
 
@@ -53,7 +59,15 @@ class LoginModal extends Component {
             id='login-form'
             onSubmit={event =>
               this.handleLogin(event)}
-            >
+          >
+            <Row>
+              <Col><Input name='userType' type='radio' value='guest' label='Guest' defaultValue='checked' s={3}
+                onChange={event =>
+                  this.setState({userType: event.target.value})} /></Col>
+              <Col><Input name='userType' type='radio' value='host' label='Host' s={3}
+                onChange={event =>
+                  this.setState({userType: event.target.value})} /></Col>
+            </Row>
             <Input type="email" label="Email" s={12}
               onChange={event =>
                 this.setState({email: event.target.value})}

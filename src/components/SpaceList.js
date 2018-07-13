@@ -14,12 +14,13 @@ class SpaceList extends Component {
     if(this.props.spaces.isLoading) {
       this.props.submitSearch()
     }
-    console.log('SpaceList', this.props.spaces)
   }
 
   render() {
-    if(this.props.spaces.isLoading)
-      return <div className='preloader'><Preloader size='big'/></div>
+    if(this.props.spaces.isLoading || !this.props.spaces.spaces)
+      return <div className='preloader'>
+        <Preloader size='big'/>
+      </div>
 
     const Spaces = this.props.spaces.spaces.map(space => {
       return (

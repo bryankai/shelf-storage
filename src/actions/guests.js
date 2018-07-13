@@ -1,7 +1,9 @@
 import { request } from "../helper/helper";
 export const CREATE_ORDER = 'CREATE_ORDER';
 export const FETCH_GUEST = 'FETCH_GUEST';
-export const FETCH_GUEST_ORDERS = 'FETCH_GUEST_ORDERS';
+export const FETCH_GUEST_ORDERS_PENDING = 'FETCH_GUEST_ORDERS_PENDING';
+export const FETCH_GUEST_ORDERS_SUCCESS = 'FETCH_GUEST_ORDERS_SUCCESS';
+export const FETCH_GUEST_ORDERS_FAILED = 'FETCH_GUEST_ORDERS_FAILED';
 
 export const fetchGuest = (guestId) => (
   dispatch => {
@@ -15,10 +17,18 @@ export const fetchGuest = (guestId) => (
 
 export const fetchOrdersByGuestId = (guestId) => (
   dispatch => {
+    console.log('fetchOrdersPending')
+    dispatch({type: FETCH_GUEST_ORDERS_PENDING});
     request(`/guests/${guestId}/orders`)
     .then((response) => {
-      console.log(response)
-      dispatch({type: FETCH_GUEST_ORDERS, payload: response.data.data})
+      console.log('fetchOrdersSuccess!',response)
+      dispatch({type: FETCH_GUEST_ORDERS_SUCCESS, payload: response.data.data})
+    })
+    .catch(error => {
+      dispatch({
+        type: FETCH_GUEST_ORDERS_FAILED,
+        payload: error
+      })
     })
   }
 )

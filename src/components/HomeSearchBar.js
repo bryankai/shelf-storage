@@ -41,7 +41,7 @@ class SearchBar extends React.Component {
     }
 
     return (
-      <div className='search-bar-container' style={shiftDown}>
+      <div className='home-search-bar-container' style={shiftDown}>
         <PlacesAutocomplete
           value={this.state.address}
           onChange={this.handleChange}

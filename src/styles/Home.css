@@ -19,8 +19,9 @@
 .search-row {
   border: 1px solid #DBDBDB;
   background-color: white;
-  display: flex;
-  justify-content: space-around;
+  padding: 10px;
+  /* display: flex;
+  justify-content: space-around; */
   align-items: center;
   -webkit-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
 	   -moz-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
@@ -29,6 +30,16 @@
 
 .search-row {
   width: 500px;
+}
+
+.home-search-bar-container {
+  width: 90%
+}
+
+.autocomplete-dropdown-container {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
 }
 
 /* ABOUT */

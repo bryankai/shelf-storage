@@ -18,6 +18,8 @@ class GuestReservations extends Component {
       margin: '70px',
     }
 
+    // Need to make sure user is authorized, guest, and correct id
+    // May not need to do correct id since not query paramter
     if(!this.props.auth.authorized) {
       return <Redirect to="/"/>
     }

@@ -26,7 +26,7 @@ const filterForActiveNearbySpaces = (payload) => {
 
 // Reducers
 let spacesInitialState = {
-  spaces:[],
+  spaces: null,
   isLoading: true,
   showError: false,
 };
