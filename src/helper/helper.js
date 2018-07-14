@@ -116,7 +116,6 @@ export const getDistance = (a,b) => {
           Math.cos(φ1) * Math.cos(φ2) *
           Math.sin(Δλ/2) * Math.sin(Δλ/2)
   const c = 2 * Math.atan2(Math.sqrt(α), Math.sqrt(1-α))
-  console.log(c)
   const d = R * c
   return d
 }
