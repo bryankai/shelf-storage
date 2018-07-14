@@ -40,12 +40,11 @@ class HostOrderList extends Component {
       width: '80%',
       display: 'flex',
       justifyContent: 'center',
-      flexDirection: 'column'
     }
 
     return (
       <div>
-        <h3> Host Reservations  </h3>
+        <h3> {this.props.hostOrders.hostOrders[0].name}  </h3>
         <Row className="order-list-grid" style={orderListStyle}>
           {hostOrders}
         </Row>

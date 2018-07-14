@@ -6,6 +6,7 @@ import moment from 'moment'
 class HostOrder extends Component {
 
   render() {
+    console.log('HostOrder props',this.props.hostOrder)
     const {
       // Order
       id, start_date, end_date, total_cost,
@@ -33,8 +34,8 @@ class HostOrder extends Component {
 
     return (
       // <div style={containerStyle}>
-        <Col s={12} m={12} l={12} key={id}>
-          <Card key={id} className='orders-card horizontal'  header={<CardTitle image={img_link}></CardTitle>}
+        <Col s={4} m={4} l={4} key={id}>
+          <Card key={id} className=''  header={<CardTitle image={img_link}></CardTitle>}
           // actions={[<a href={spacePageLink}>Space Details</a>]}
           >
             <div className='host-info center-center'>
