@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Card, CardTitle, Col } from 'react-materialize'
 import moment from 'moment'
 
-class Order extends Component {
+class HostOrder extends Component {
 
   render() {
     const {
@@ -13,7 +13,7 @@ class Order extends Component {
       spaces_id, name, img_link, address, city, state, zip, lat, lng, size,
       // Host
       hosts_id, hostFirstName, hostLastName, hostAvatar
-    } = this.props.order
+    } = this.props.hostOrder
 
     const containerStyle = {
       display: 'flex',
@@ -55,4 +55,4 @@ class Order extends Component {
   }
 }
 
-export default Order
+export default HostOrder

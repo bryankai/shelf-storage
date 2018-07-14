@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { Redirect } from 'react-router-dom'
 import { getUser } from '../actions/auth';
 import { fetchHost } from '../actions/hosts';
-import HostOrderList from './OrderList'
+import HostOrderList from './HostOrderList'
 import '../styles/Reservations.css';
 
 class HostOrders extends Component {

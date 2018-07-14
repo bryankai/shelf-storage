@@ -9,30 +9,31 @@ import { fetchAllOrdersBySpaceId } from '../actions/hosts';
 
 class HostOrderList extends Component {
 
-  const spaceId = this.props.spaceId
-  console.log('HostOrderList', spaceId)
+
 
   // Mounting Methods
   componentDidMount = async () => {
+    const spaceId = this.props.spaceId
+    console.log('HostOrderList', spaceId)
     // console.log('ORDER LIST',this.props.auth.user.id)
-    // await this.props.getUser()
+    await this.props.getUser()
     console.log('HostOrderList did mount')
 
     if(this.props.auth.user.id) {
       console.log('fetchGuestOrders')
-      this.props.fetchAllOrdersBySpaceId(this.props.auth.user.id, )
+      this.props.fetchAllOrdersBySpaceId(this.props.auth.user.id, spaceId)
     }
   }
 
   render() {
-    console.log(this.props.orders)
-    if(this.props.orders.isLoading || !this.props.orders.orders)
+    console.log(this.props.hostOrders)
+    if(this.props.hostOrders.isLoading || !this.props.hostOrders.hostOrders)
       return <div className='preloader'>
         <Preloader size='big'/>
       </div>
 
-    const hostOrders = this.props.hostOrder.hostOrder.map(hostOrder => {
-      return <HostOrder key={hostOrder.id} order={hostOrder}/>
+    const hostOrders = this.props.hostOrders.hostOrders.map(hostOrder => {
+      return <HostOrder key={hostOrder.id} hostOrder={hostOrder}/>
     })
 
     const orderListStyle = {
@@ -44,7 +45,7 @@ class HostOrderList extends Component {
 
     return (
       <div>
-        <h3> My Orders for  </h3>
+        <h3> Host Reservations  </h3>
         <Row className="order-list-grid" style={orderListStyle}>
           {hostOrders}
         </Row>
