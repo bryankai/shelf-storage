@@ -13,12 +13,19 @@ class HostOrder extends Component {
       // Space
       spaces_id, name, img_link, address, city, state, zip, lat, lng, size,
       // Host
-      hosts_id, hostFirstName, hostLastName, hostAvatar
+      guests_id, first_name, last_name, avatar, email
     } = this.props.hostOrder
 
     const containerStyle = {
       display: 'flex',
       justifyContent: 'center'
+    }
+
+    const imageStyle = {
+      backgroundImage: `url(${img_link})`,
+      backgroundPosition: '50% 50%',
+      backgroundSize: 'cover',
+      height: '60vh'
     }
 
     const truncateString = (text, length=60) => {
@@ -35,20 +42,20 @@ class HostOrder extends Component {
     return (
       // <div style={containerStyle}>
         <Col s={4} m={4} l={4} key={id}>
-          <Card key={id} className=''  header={<CardTitle image={img_link}></CardTitle>}
+          <Card key={id} className=''  header={<CardTitle
+             // image={img_link}
+            ></CardTitle>}
           // actions={[<a href={spacePageLink}>Space Details</a>]}
           >
             <div className='host-info center-center'>
-              <img src={hostAvatar} alt="Avatar" className="avatar-small"/>
+              <img src={avatar} alt="Avatar" className="avatar-small"/>
               <div className='host-name center-center'>
-                {hostFirstName}
+                {first_name}
               </div>
             </div>
-            <h5><Link to={spacePageLink} >{name}</Link></h5>
+            <h6> {email} </h6>
             <h6> {timeRange} </h6>
-            <p>{address}</p>
-            <p>{city},{state} {zip}</p>
-            <h6>{size} sqft</h6>
+            <h6> Total Cost: ${total_cost} </h6>
           </Card>
         </Col>
       // </div>

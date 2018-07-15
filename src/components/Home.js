@@ -18,7 +18,7 @@ class Home extends Component {
               <h3><b>Find storage in your area</b></h3>
             </Row>
             <Row className="search-row">
-               <HomeSearchBar/>
+               {/* <HomeSearchBar/> */}
             </Row>
           </div>
         </div>

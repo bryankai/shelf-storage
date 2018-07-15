@@ -6,6 +6,7 @@ import moment from 'moment'
 class HostSpace extends Component {
 
   render() {
+    console.log('HostSpace', this.props.hostSpace)
     const {
       // Space
       id, name, description, img_link, address, city, state, zip, lat, lng, size,

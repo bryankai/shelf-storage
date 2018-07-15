@@ -28,13 +28,14 @@ class HostOrders extends Component {
 
     return (
       <div style={shiftDown}>
+        {/* <div className='image-splash' style={imageStyle}></div> */}
         <HostOrderList spaceId={spaceId}/>
       </div>
     )
   }
 }
 
-const mapStateToProps = ({guest, auth}) => {
+const mapStateToProps = ({auth}) => {
   return {auth}
 }
 
