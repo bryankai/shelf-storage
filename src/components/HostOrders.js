@@ -15,7 +15,7 @@ class HostOrders extends Component {
 
   render() {
     const shiftDown = {
-      margin: '70px',
+      marginTop: '60px',
     }
 
     const {spaceId} = this.props.match.params
@@ -28,7 +28,6 @@ class HostOrders extends Component {
 
     return (
       <div style={shiftDown}>
-        {/* <div className='image-splash' style={imageStyle}></div> */}
         <HostOrderList spaceId={spaceId}/>
       </div>
     )

@@ -42,9 +42,17 @@ class HostOrderList extends Component {
       justifyContent: 'center',
     }
 
+    const imageStyle = {
+      backgroundImage: `url(${this.props.hostOrders.hostOrders[0].img_link})`,
+      backgroundPosition: '50% 50%',
+      backgroundSize: 'cover',
+      height: '60vh'
+    }
+
     return (
       <div>
-        <h3> {this.props.hostOrders.hostOrders[0].name}  </h3>
+        <div className='image-splash' style={imageStyle}></div>
+        <h3> Orders for '{this.props.hostOrders.hostOrders[0].name}' </h3>
         <Row className="order-list-grid" style={orderListStyle}>
           {hostOrders}
         </Row>

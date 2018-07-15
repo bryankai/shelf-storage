@@ -25,7 +25,8 @@ class SpacePage extends Component {
       backgroundImage: `url(${img_link})`,
       backgroundPosition: '50% 50%',
       backgroundSize: 'cover',
-      height: '60vh'
+      height: '60vh',
+      marginTop: '60px',
     }
 
     const hostStyle = {
