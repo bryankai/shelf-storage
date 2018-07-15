@@ -18,12 +18,7 @@ class Home extends Component {
               <h3><b>Find storage in your area</b></h3>
             </Row>
             <Row className="search-row">
-              {/* <form className='search-form' id='search-form'  s={8}>
-                <Input className="search-input" placeholder="City or Zip"/>
-              </form>
-               <Button waves='light' className='search-button' type="submit" form="search-form" value="Search" s={2}>Search</Button> */}
                <HomeSearchBar/>
-
             </Row>
           </div>
         </div>
