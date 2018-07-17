@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {Row, Preloader} from 'react-materialize'
+import {Row, Col, Preloader, Button, Card} from 'react-materialize'
 import HostSpace from './HostSpace'
 import '../styles/Home.css';
 import { getHostUser } from '../actions/hostAuth';
@@ -43,6 +43,9 @@ class HostSpaceList extends Component {
         <h3> My Spaces </h3>
         <Row className="hostSpace-list-grid" style={hostSpaceListStyle}>
           {HostSpaces}
+          <Col s={12} m={12} l={12}>
+              <Button floating large className='red large-margin' waves='light' icon='add' />
+          </Col>
         </Row>
       </div>
     )

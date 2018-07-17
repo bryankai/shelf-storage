@@ -159,3 +159,7 @@ div #book-results {
 .login-type {
   color: green;
 }
+
+.large-margin {
+  margin: 50px;
+}
