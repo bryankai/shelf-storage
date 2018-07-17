@@ -35,7 +35,7 @@ class SearchBar extends React.Component {
               <div>
                 <input
                   {...getInputProps({
-                    placeholder: 'Search Spaces...',
+                    placeholder: 'Search local spaces...',
                     className: 'location-search-input',
                   })}
                 />

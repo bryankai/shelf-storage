@@ -59,7 +59,7 @@ class Home extends Component {
               </Col>
               <Col s={12} m={6} className='host column'>
                 <h3>Become a Host</h3>
-                <Button waves='light' className='signup-button'  value="Signup" s={6}>Host Sign Up</Button>
+                <GuestSignupModal/>
                 <Button waves='light' className='login-button'   value="Login" s={6}><LoginModal/></Button>
               </Col>
             </Row>

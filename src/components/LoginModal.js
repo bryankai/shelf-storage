@@ -11,7 +11,7 @@ class LoginModal extends Component {
     this.state = {
       email: "",
       password: "",
-      loginType: null //guest || host
+      loginType: "guest" //guest || host
     };
   }
 
@@ -31,9 +31,9 @@ class LoginModal extends Component {
     }
   }
 
-  handleOptionChange = async (event) => {
+  handleOptionChange = async (type) => {
     // event.preventDefault()
-    await this.setState({loginType: event.target.value})
+    await this.setState({loginType: type})
     console.log(this.state.loginType);
   }
 
@@ -61,28 +61,34 @@ class LoginModal extends Component {
           </div>
         }
         trigger={<div>Login</div>}>
-          <form className='login-form'
-            id='login-form'
-            onSubmit={event => this.handleLogin(event)}
-          >
-            <Row className="login-type-row">
-              <Col className="radio login-type">
-                <label>
-                  <input type="radio" value="guest"
-                    checked={this.state.loginType === 'guest'}
-                    onChange={event => this.handleOptionChange(event)} />
-                    Guest
-                </label>
+            <Row className="login-type-row center-center">
+              <Col className="login-type">
+                <div className={
+                  this.state.loginType === 'guest'
+                  ? "login-type-button btn waves-effect waves-light"
+                  : "login-type-button btn waves-effect waves-light btn-flat"
+                }
+                value="guest"
+                  onClick={event => this.handleOptionChange("guest")}>
+                  Guest
+                </div>
               </Col>
-              <Col className="radio login-type">
-                <label>
-                  <input type="radio" value="host"
-                    checked={this.state.loginType === 'host'}
-                    onChange={event =>this.handleOptionChange(event)} />
+              <Col className="login-type">
+                <div className={
+                  this.state.loginType === 'host'
+                  ? "login-type-button btn waves-effect waves-light"
+                  : "login-type-button btn waves-effect waves-light btn-flat"
+                }
+                value="host"
+                    onClick={event =>this.handleOptionChange("host")}>
                     Host
-                  </label>
+                  </div>
                 </Col>
             </Row>
+            <form className='login-form'
+              id='login-form'
+              onSubmit={event => this.handleLogin(event)}
+              >
             <Input type="email" label="Email" s={12}
               onChange={event =>
                 this.setState({email: event.target.value})}
