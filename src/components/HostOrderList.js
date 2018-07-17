@@ -6,6 +6,8 @@ import HostOrder from './HostOrder'
 import '../styles/Home.css';
 import { getHostUser } from '../actions/hostAuth';
 import { fetchAllOrdersBySpaceId } from '../actions/hosts';
+import { fetchOneSpace } from '../actions/spaces';
+
 
 class HostOrderList extends Component {
 
@@ -21,6 +23,7 @@ class HostOrderList extends Component {
 
     if(this.props.hostAuth.user.id) {
       this.props.fetchAllOrdersBySpaceId(this.props.hostAuth.user.id, spaceId)
+      this.props.fetchOneSpace(spaceId)
     }
   }
 
@@ -32,6 +35,7 @@ class HostOrderList extends Component {
       </div>
 
     const hostOrders = this.props.hostOrders.hostOrders.map(hostOrder => {
+      console.log('!!!!!')
       return <HostOrder key={hostOrder.id} hostOrder={hostOrder}/>
     })
 
@@ -42,7 +46,7 @@ class HostOrderList extends Component {
     }
 
     const imageStyle = {
-      backgroundImage: `url(${this.props.hostOrders.hostOrders[0].img_link})`,
+      backgroundImage: `url(${this.props.spaces.img_link})`,
       backgroundPosition: '50% 50%',
       backgroundSize: 'cover',
       height: '60vh'
@@ -51,21 +55,23 @@ class HostOrderList extends Component {
     return (
       <div>
         <div className='image-splash' style={imageStyle}></div>
-        <h3> Orders for '{this.props.hostOrders.hostOrders[0].name}' </h3>
+        <h3> Orders for '{this.props.spaces.name}' </h3>
         <Row className="order-list-grid" style={orderListStyle}>
-          {hostOrders}
+          {hostOrders.length>0
+            ? hostOrders
+            : <h5>No Orders Found</h5>}
         </Row>
       </div>
     )
   }
 }
 
-const mapStateToProps = ({hostOrders, hostAuth}) => {
-  return {hostOrders, hostAuth}
+const mapStateToProps = ({hostOrders, hostAuth, spaces}) => {
+  return {hostOrders, hostAuth, spaces}
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({getHostUser, fetchAllOrdersBySpaceId}, dispatch)
+  return bindActionCreators({getHostUser, fetchAllOrdersBySpaceId, fetchOneSpace}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HostOrderList)
