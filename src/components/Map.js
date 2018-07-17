@@ -5,8 +5,6 @@ import { connect } from 'react-redux';
 // import MarkerComp from './MarkerComp'
 
 const Map = compose(
-
-
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCqMt2G9OftUPNZV2VCne0pnB5VIJV2Ct8",
     loadingElement: <div style={{ height: `100%` }} />,

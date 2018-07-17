@@ -24,6 +24,16 @@ class NavBar extends Component {
     }
   }
 
+  componentDidUpdate(prevProps){
+    if(prevProps.auth !== this.props.auth && this.props.auth.user.id){
+      this.props.fetchGuest(this.props.auth.user.id)
+    }
+
+    if(prevProps.hostAuth !== this.props.hostAuth && this.props.hostAuth.user.id){
+      this.props.fetchHost(this.props.hostAuth.user.id)
+    }
+  }
+
   render () {
     const navStyle = {
       position: 'fixed', /* Set the navbar to fixed position */

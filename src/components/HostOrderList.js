@@ -23,16 +23,18 @@ class HostOrderList extends Component {
 
     if(this.props.hostAuth.user.id) {
       this.props.fetchAllOrdersBySpaceId(this.props.hostAuth.user.id, spaceId)
-      this.props.fetchOneSpace(spaceId)
+      // this.props.fetchOneSpace(spaceId)
     }
   }
 
   render() {
     console.log(this.props.hostOrders)
-    if(this.props.hostOrders.isLoading || !this.props.hostOrders.hostOrders)
+    if(this.props.hostOrders.isLoading || !this.props.hostOrders.hostOrders || space)
       return <div className='preloader'>
         <Preloader size='big'/>
       </div>
+
+    const space = this.props.hostOrders.hostOrders.find(ele => ele.id === this.props.spaceId)
 
     const hostOrders = this.props.hostOrders.hostOrders.map(hostOrder => {
       console.log('!!!!!')
@@ -45,17 +47,19 @@ class HostOrderList extends Component {
       justifyContent: 'center',
     }
 
-    const imageStyle = {
-      backgroundImage: `url(${this.props.spaces.img_link})`,
-      backgroundPosition: '50% 50%',
-      backgroundSize: 'cover',
-      height: '60vh'
-    }
+    // if(space) {
+      const imageStyle = {
+        backgroundImage: `url(${(space ? space.img_link : "")})`,
+        backgroundPosition: '50% 50%',
+        backgroundSize: 'cover',
+        height: '60vh'
+      }
+    // }
 
     return (
       <div>
-        <div className='image-splash' style={imageStyle}></div>
-        <h3> Orders for '{this.props.spaces.name}' </h3>
+        <div className='image-splash' style={imageStyle ? imageStyle : ""}></div>
+        <h3> Orders for '{space ? space.name : ""}' </h3>
         <Row className="order-list-grid" style={orderListStyle}>
           {hostOrders.length>0
             ? hostOrders

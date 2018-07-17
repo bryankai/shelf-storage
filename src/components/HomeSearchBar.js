@@ -5,8 +5,8 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Redirect } from 'react-router-dom'
-import { submitSearch } from '../actions/spaces';
+import { Redirect, withRouter } from 'react-router-dom'
+import { submitSearch, setSearchString } from '../actions/spaces';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -19,29 +19,13 @@ class SearchBar extends React.Component {
   };
 
   handleSelect = address => {
-    geocodeByAddress(address)
-      .then(results => {
-        console.log(results[0].formatted_address)
-        return getLatLng(results[0])
-      })
-      .then(latLng => this.props.submitSearch(latLng))
-      .catch(error => console.error('Error', error));
+    this.props.setSearchString(address)
+    this.props.history.push('/results')
   };
 
   render() {
-    // Removed for HOME SEARCH BAR
-    const shiftDown = {
-      // marginTop: '64px',
-      // zIndex: '5'
-    }
-
-    // SPECIAL RENDER FOR THIS HOME SEARCH BAR
-    if (!this.props.spaces.isLoading) {
-      return <Redirect to="/results"/>
-    }
-
     return (
-      <div className='home-search-bar-container' style={shiftDown}>
+      <div className='home-search-bar-container'>
         <PlacesAutocomplete
           value={this.state.address}
           onChange={this.handleChange}
@@ -90,7 +74,7 @@ const mapStateToProps = ({spaces}) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({submitSearch }, dispatch)
+  return bindActionCreators({submitSearch, setSearchString }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchBar))

@@ -1,7 +1,7 @@
 import React, { Component }  from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {Row, Col} from 'react-materialize'
+import {Preloader, Row, Col} from 'react-materialize'
 import { fetchOneSpace } from '../actions/spaces';
 // import BookSpaceModal from './BookSpaceModal'
 import BookPage from './BookPage'
@@ -11,15 +11,23 @@ import '../styles/SpacePage.css';
 
 class SpacePage extends Component {
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     console.log(this.props.match.params)
-    this.props.fetchOneSpace(this.props.match.params.spaceId)
+    await this.props.fetchOneSpace(this.props.match.params.spaceId)
+    console.log(this.props.spaces)
   }
 
   render() {
     const {id, name, description, img_link, city, host_name, avatar, price, temp_control, access, size,
     // active, hosts_id, address, state, zip, deleted_at,
     } = this.props.spaces
+
+    if(this.props.spaces.isLoading) {
+      console.log('space page loading')
+      return <div className='preloader'>
+        <Preloader size='big'/>
+      </div>
+    }
 
     const imageStyle = {
       backgroundImage: `url(${img_link})`,
@@ -57,9 +65,11 @@ class SpacePage extends Component {
                   <Col s={4}>
                     <p>Size: {size} sqft </p>
                   </Col>
-                  <Col s={4}>
-                    <p>24/7 Access: {access} </p>
-                  </Col>
+                  {access?
+                    <Col s={4}>
+                      <p>24/7 Access</p>
+                    </Col>
+                  : null}
                 </Row>
               </Col>
               <Col s={3} className='center-center' style={hostStyle}>

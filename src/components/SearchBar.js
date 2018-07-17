@@ -12,6 +12,12 @@ class SearchBar extends React.Component {
     super(props);
     this.state = { address: '' };
   }
+  componentDidMount(){
+    if(this.props.spaces.searchString.length > 0){
+      this.setState({address: this.props.spaces.searchString})
+      this.handleSelect(this.props.spaces.searchString)
+    }
+  }
 
   handleChange = address => {
     this.setState({ address });
@@ -78,8 +84,10 @@ class SearchBar extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => ({spaces: state.spaces})
+
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({submitSearch }, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(SearchBar)
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)

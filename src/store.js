@@ -11,12 +11,13 @@ import {hosts, hostSpaces, hostOrders} from './reducers/hosts'
 
 
 const rootReducer = combineReducers({
-    spaces, searchLocation, auth, hostAuth, guests, hosts, orders, hostSpaces, hostOrders
+    spaces, searchLocation, auth, hostAuth, guests, hosts, orders, hostSpaces, hostOrders,
 });
 
 export default(initialState) => {
     return createStore(
       rootReducer,
+      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
       process.env.NODE_ENV === 'production' ?
         applyMiddleware(thunkMiddleware) :
         applyMiddleware(logger, thunkMiddleware)

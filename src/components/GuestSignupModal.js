@@ -28,8 +28,6 @@ class GuestSignupModal extends Component {
   };
 
   render() {
-    console.log('auth state', this.props.auth)
-
     const modalStyle = {
       justifyContent: 'center',
       // height: '700px',

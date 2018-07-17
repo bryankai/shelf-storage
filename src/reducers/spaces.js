@@ -1,5 +1,6 @@
 import { getDistance } from "../helper/helper";
 import {
+  SET_SEARCH_STRING,
   FETCH_SPACES_PENDING,
   FETCH_SPACES_SUCCESS,
   FETCH_SPACES_FAILED,
@@ -29,10 +30,13 @@ let spacesInitialState = {
   spaces: null,
   isLoading: true,
   showError: false,
+  searchString: ''
 };
 
 export const spaces = (state = spacesInitialState, action) => {
   switch(action.type){
+    case SET_SEARCH_STRING:
+      return {...state, searchString: action.payload}
     case FETCH_SPACES_PENDING:
       return {...state, isLoading: true}
     case FETCH_SPACES_SUCCESS:
