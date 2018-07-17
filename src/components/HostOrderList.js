@@ -17,7 +17,6 @@ class HostOrderList extends Component {
   componentDidMount = async () => {
     const spaceId = this.props.spaceId
     console.log('HostOrderList', spaceId)
-    // console.log('ORDER LIST',this.props.hostAuth.user.id)
     await this.props.getHostUser()
     console.log('HostOrderList did mount')
 
@@ -34,10 +33,14 @@ class HostOrderList extends Component {
         <Preloader size='big'/>
       </div>
 
-    const space = this.props.hostOrders.hostOrders.find(ele => ele.id === this.props.spaceId)
-
+    const space = this.props.hostOrders.hostOrders.find(hostOrder => {
+      console.log(hostOrder.spaces_id, this.props.spaceId)
+      return hostOrder.spaces_id == this.props.spaceId
+    })
+    console.log(this.props.spaceId);
+    console.log(space)
     const hostOrders = this.props.hostOrders.hostOrders.map(hostOrder => {
-      console.log('!!!!!')
+      console.log(hostOrder)
       return <HostOrder key={hostOrder.id} hostOrder={hostOrder}/>
     })
 

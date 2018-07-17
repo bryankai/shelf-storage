@@ -43,6 +43,13 @@ export const spaces = (state = spacesInitialState, action) => {
       return {...state, isLoading: false, spaces: filterForActiveNearbySpaces(action.payload)}
     case FETCH_SPACES_FAILED:
       return {...state, isLoading: false, showError: true}
+    default:
+      return state
+  }
+}
+
+export const oneSpace = (state={}, action) => {
+  switch(action.type) {
     case FETCH_ONE_SPACE:
       return action.payload
     default:

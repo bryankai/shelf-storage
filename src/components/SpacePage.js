@@ -14,20 +14,20 @@ class SpacePage extends Component {
   componentDidMount = async () => {
     console.log(this.props.match.params)
     await this.props.fetchOneSpace(this.props.match.params.spaceId)
-    console.log(this.props.spaces)
+    // console.log(this.oneSpace.spaces)
   }
 
   render() {
-    const {id, name, description, img_link, city, host_name, avatar, price, temp_control, access, size,
-    // active, hosts_id, address, state, zip, deleted_at,
-    } = this.props.spaces
-
-    if(this.props.spaces.isLoading) {
+    if(!this.props.oneSpace.spaces) {
       console.log('space page loading')
       return <div className='preloader'>
         <Preloader size='big'/>
       </div>
     }
+
+    const {id, name, description, img_link, city, host_name, avatar, price, temp_control, access, size,
+      // active, hosts_id, address, state, zip, deleted_at,
+    } = this.props.oneSpace.spaces
 
     const imageStyle = {
       backgroundImage: `url(${img_link})`,
@@ -92,8 +92,8 @@ class SpacePage extends Component {
   }
 }
 
-const mapStateToProps = ({spaces, auth}) => {
-  return {spaces, auth}
+const mapStateToProps = ({spaces, oneSpace, auth}) => {
+  return {spaces, oneSpace, auth}
 }
 
 

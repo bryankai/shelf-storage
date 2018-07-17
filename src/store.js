@@ -5,13 +5,13 @@ import thunkMiddleware from 'redux-thunk';
 
 import {auth} from './reducers/auth'
 import {hostAuth} from './reducers/hostAuth'
-import {spaces, searchLocation} from './reducers/spaces'
+import {spaces, oneSpace, searchLocation} from './reducers/spaces'
 import {guests, orders} from './reducers/guests'
 import {hosts, hostSpaces, hostOrders} from './reducers/hosts'
 
 
 const rootReducer = combineReducers({
-    spaces, searchLocation, auth, hostAuth, guests, hosts, orders, hostSpaces, hostOrders,
+    spaces, oneSpace, searchLocation, auth, hostAuth, guests, hosts, orders, hostSpaces, hostOrders,
 });
 
 export default(initialState) => {
