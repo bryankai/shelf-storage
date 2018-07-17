@@ -12,15 +12,17 @@ import HostSpaces from './components/HostSpaces'
 import HostOrders from './components/HostOrders'
 
 import { getUser } from './actions/auth';
+import { getHostUser } from './actions/hostAuth';
 
 import './styles/App.css';
 
 class App extends Component {
   componentDidMount(){
     this.props.getUser()
+    this.props.getHostUser()
   }
   render() {
-    if(this.props.auth.isLoading)
+    if(this.props.auth.isLoading||this.props.hostAuth.isLoading)
       return <div className='preloader'><Preloader size='big'/></div>
 
     return (
@@ -39,7 +41,7 @@ class App extends Component {
               <Route exact path='/spaces/:spaceId' component={SpacePage}/>
               <Route exact path='/guest/reservations' component={GuestReservations}/>
               <Route exact path='/host/spaces' component={HostSpaces}/>
-              <Route exact path='/host/spaces/:spaceId/reservations' component={HostOrders}/>
+              <Route exact path='/spaces/:spaceId/reservations' component={HostOrders}/>
             </Switch>
           </div>
           <Modal
@@ -52,9 +54,8 @@ class App extends Component {
     );
   }
 }
-const mapStateToProps = ({auth}) => ({auth});
+const mapStateToProps = ({auth, hostAuth}) => ({auth, hostAuth});
 
-
-const mapDispatchToProps = dispatch => bindActionCreators({ getUser }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ getUser, getHostUser }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

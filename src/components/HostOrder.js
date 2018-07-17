@@ -1,5 +1,4 @@
 import React, { Component }  from 'react';
-import { Link } from 'react-router-dom'
 import { Card, CardTitle, Col } from 'react-materialize'
 import moment from 'moment'
 
@@ -11,21 +10,14 @@ class HostOrder extends Component {
       // Order
       id, start_date, end_date, total_cost,
       // Space
-      spaces_id, name, img_link, address, city, state, zip, lat, lng, size,
-      // Host
-      guests_id, first_name, last_name, avatar, email
+      spaces_id,
+      // Guest
+      first_name, avatar, email
     } = this.props.hostOrder
 
     const containerStyle = {
       display: 'flex',
       justifyContent: 'center'
-    }
-
-    const imageStyle = {
-      backgroundImage: `url(${img_link})`,
-      backgroundPosition: '50% 50%',
-      backgroundSize: 'cover',
-      height: '60vh'
     }
 
     const truncateString = (text, length=60) => {
@@ -42,10 +34,7 @@ class HostOrder extends Component {
     return (
       // <div style={containerStyle}>
         <Col s={4} m={4} l={4} key={id}>
-          <Card key={id} className=''  header={<CardTitle
-             // image={img_link}
-            ></CardTitle>}
-          // actions={[<a href={spacePageLink}>Space Details</a>]}
+          <Card key={id} className='' 
           >
             <div className='host-info center-center'>
               <img src={avatar} alt="Avatar" className="avatar-small"/>

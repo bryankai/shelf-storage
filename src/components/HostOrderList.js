@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import {Row, Preloader} from 'react-materialize'
 import HostOrder from './HostOrder'
 import '../styles/Home.css';
-import { getUser } from '../actions/auth';
+import { getHostUser } from '../actions/hostAuth';
 import { fetchAllOrdersBySpaceId } from '../actions/hosts';
 
 class HostOrderList extends Component {
@@ -15,13 +15,12 @@ class HostOrderList extends Component {
   componentDidMount = async () => {
     const spaceId = this.props.spaceId
     console.log('HostOrderList', spaceId)
-    // console.log('ORDER LIST',this.props.auth.user.id)
-    await this.props.getUser()
+    // console.log('ORDER LIST',this.props.hostAuth.user.id)
+    await this.props.getHostUser()
     console.log('HostOrderList did mount')
 
-    if(this.props.auth.user.id) {
-      console.log('fetchGuestOrders')
-      this.props.fetchAllOrdersBySpaceId(this.props.auth.user.id, spaceId)
+    if(this.props.hostAuth.user.id) {
+      this.props.fetchAllOrdersBySpaceId(this.props.hostAuth.user.id, spaceId)
     }
   }
 
@@ -61,12 +60,12 @@ class HostOrderList extends Component {
   }
 }
 
-const mapStateToProps = ({hostOrders, auth}) => {
-  return {hostOrders, auth}
+const mapStateToProps = ({hostOrders, hostAuth}) => {
+  return {hostOrders, hostAuth}
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({getUser, fetchAllOrdersBySpaceId}, dispatch)
+  return bindActionCreators({getHostUser, fetchAllOrdersBySpaceId}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HostOrderList)

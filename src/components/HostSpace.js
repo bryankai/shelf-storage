@@ -18,8 +18,10 @@ class HostSpace extends Component {
       justifyContent: 'center'
     }
 
+    console.log(id)
+
     // Issue with this link directing to /host/host/spaces... or /spaces, but not host/spaces...
-    const spaceOrdersLink = `host/spaces/${id}/reservations`
+    const spaceOrdersLink = `/spaces/${id}/reservations`
     const spacePageLink = `/spaces/${id}`
 
     const truncateString = (text, length=60) => {

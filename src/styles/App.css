@@ -155,3 +155,7 @@ div #book-results {
   text-align: center;
   color: red;
 }
+
+.login-type {
+  color: green;
+}

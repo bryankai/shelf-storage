@@ -20,7 +20,6 @@ class GuestSignupModal extends Component {
   handleGuestSignup = async (event) => {
     event.preventDefault()
     const isAuthenticated = await this.props.userSignup(this.state)
-    console.log(isAuthenticated)
     if (isAuthenticated) {
       window.$('#guestSignupModal').modal('close');
       window.$('#materialize-modal-overlay-1').css('opacity', '0')

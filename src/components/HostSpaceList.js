@@ -4,18 +4,18 @@ import { bindActionCreators } from 'redux';
 import {Row, Preloader} from 'react-materialize'
 import HostSpace from './HostSpace'
 import '../styles/Home.css';
-import { getUser } from '../actions/auth';
+import { getHostUser } from '../actions/hostAuth';
 import { fetchAllSpacesByHostId } from '../actions/hosts';
 
 class HostSpaceList extends Component {
 
   // Mounting Methods
   componentDidMount = async () => {
-    await this.props.getUser()
+    await this.props.getHostUser()
     console.log('HostSpaceList did mount')
-    if(this.props.auth.user.id) {
-      console.log(this.props.auth.user.id)
-      this.props.fetchAllSpacesByHostId(this.props.auth.user.id)
+    if(this.props.hostAuth.user.id) {
+      console.log(this.props.hostAuth.user.id)
+      this.props.fetchAllSpacesByHostId(this.props.hostAuth.user.id)
     }
   }
 
@@ -49,12 +49,12 @@ class HostSpaceList extends Component {
   }
 }
 
-const mapStateToProps = ({hostSpaces, auth}) => {
-  return {hostSpaces, auth}
+const mapStateToProps = ({hostSpaces, hostAuth}) => {
+  return {hostSpaces, hostAuth}
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({getUser, fetchAllSpacesByHostId}, dispatch)
+  return bindActionCreators({getHostUser, fetchAllSpacesByHostId}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HostSpaceList)

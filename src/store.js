@@ -4,14 +4,14 @@ import logger from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 
 import {auth} from './reducers/auth'
+import {hostAuth} from './reducers/hostAuth'
 import {spaces, searchLocation} from './reducers/spaces'
 import {guests, orders} from './reducers/guests'
-import {hostSpaces} from './reducers/hosts'
-import {hostOrders} from './reducers/hosts'
+import {hosts, hostSpaces, hostOrders} from './reducers/hosts'
 
 
 const rootReducer = combineReducers({
-    spaces, searchLocation, auth, guests, orders, hostSpaces, hostOrders
+    spaces, searchLocation, auth, hostAuth, guests, hosts, orders, hostSpaces, hostOrders
 });
 
 export default(initialState) => {

@@ -2,8 +2,8 @@ import React, { Component }  from 'react';
 import {Modal, Button, Input, Row, Col} from 'react-materialize'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { userLogin } from '../actions/auth';
-import { getUser } from '../actions/auth';
+import { userLogin, getUser } from '../actions/auth';
+import { hostLogin } from '../actions/hostAuth';
 
 class LoginModal extends Component {
   constructor(props) {
@@ -11,16 +11,17 @@ class LoginModal extends Component {
     this.state = {
       email: "",
       password: "",
-      loginType: 'guest' //guest || host
+      loginType: null //guest || host
     };
   }
 
   handleLogin = async (event) => {
     event.preventDefault()
+    console.log(this.state.loginType)
     let isAuthenticated = null
-    if (this.state.loginType=='guest') {
+    if (this.state.loginType === 'guest') {
       isAuthenticated = await this.props.userLogin(this.state.email, this.state.password)
-    } else if (this.state.loginType=='host') {
+    } else if (this.state.loginType === 'host') {
       isAuthenticated = await this.props.hostLogin(this.state.email, this.state.password)
     }
     if (isAuthenticated) {
@@ -28,7 +29,13 @@ class LoginModal extends Component {
       window.$('#materialize-modal-overlay-1').css('opacity', '0')
       // this.props.getUser(this.props.auth.user.id)
     }
-  };
+  }
+
+  handleOptionChange = async (event) => {
+    // event.preventDefault()
+    await this.setState({loginType: event.target.value})
+    console.log(this.state.loginType);
+  }
 
 
 
@@ -36,7 +43,9 @@ class LoginModal extends Component {
     const modalStyle = {
       justifyContent: 'center',
       height: '380px',
-      width: '550px'
+      // 550 for production, 600 for testing 2 types of login selections
+      // width: '550px'
+      width: '650px'
     }
 
     return (
@@ -47,26 +56,32 @@ class LoginModal extends Component {
         actions={
           <div className='modal-footer-buttons'>
             <Button className='login-button' waves='light' type="submit" form="login-form" value="Login"
-              // modal="close"
               >Login</Button>
             <Button flat modal="close" waves="light">Close</Button>
           </div>
         }
-        trigger={
-            <div>Login</div>
-        }>
+        trigger={<div>Login</div>}>
           <form className='login-form'
             id='login-form'
-            onSubmit={event =>
-              this.handleLogin(event)}
+            onSubmit={event => this.handleLogin(event)}
           >
-            <Row>
-              <Col><Input name='userType' type='radio' value='guest' label='Guest' defaultValue='checked' s={3}
-                onChange={event =>
-                  this.setState({userType: event.target.value})} /></Col>
-              <Col><Input name='userType' type='radio' value='host' label='Host' s={3}
-                onChange={event =>
-                  this.setState({userType: event.target.value})} /></Col>
+            <Row className="login-type-row">
+              <Col className="radio login-type">
+                <label>
+                  <input type="radio" value="guest"
+                    checked={this.state.loginType === 'guest'}
+                    onChange={event => this.handleOptionChange(event)} />
+                    Guest
+                </label>
+              </Col>
+              <Col className="radio login-type">
+                <label>
+                  <input type="radio" value="host"
+                    checked={this.state.loginType === 'host'}
+                    onChange={event =>this.handleOptionChange(event)} />
+                    Host
+                  </label>
+                </Col>
             </Row>
             <Input type="email" label="Email" s={12}
               onChange={event =>
@@ -77,7 +92,7 @@ class LoginModal extends Component {
                 this.setState({password: event.target.value})}
             />
           </form>
-        <div className={ this.props.auth.showLoginError ? 'login-auth-error' : 'login-hide-auth-error' }>
+        <div className={ this.props.auth.showLoginError || this.props.hostAuth.showLoginError ? 'login-auth-error' : 'login-hide-auth-error' }>
           Invalid Username or Password
         </div>
       </Modal>
@@ -85,8 +100,8 @@ class LoginModal extends Component {
   }
 }
 
-const mapStateToProps = ({auth}) => ({auth});
+const mapStateToProps = ({auth, hostAuth}) => ({auth, hostAuth});
 
-const mapDispatchToProps = dispatch => (bindActionCreators({userLogin, getUser}, dispatch));
+const mapDispatchToProps = dispatch => (bindActionCreators({userLogin, hostLogin, getUser}, dispatch));
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginModal);

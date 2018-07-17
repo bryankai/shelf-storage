@@ -12,7 +12,6 @@ const PlacesWithStandaloneSearchBox = compose(
   lifecycle({
     componentWillMount() {
       const refs = {}
-
       this.setState({
         places: [],
         onSearchBoxMounted: ref => {
@@ -20,7 +19,6 @@ const PlacesWithStandaloneSearchBox = compose(
         },
         onPlacesChanged: () => {
           const places = refs.searchBox.getPlaces();
-
           this.setState({
             places,
           });
