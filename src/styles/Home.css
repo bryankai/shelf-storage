@@ -5,52 +5,7 @@
   align-items: center;
 }
 
-/* SEARCH */
-
-.white-title {
-  color: white;
-}
-
-.search-container {
-  background-image: url('../assets/suitcases.jpeg');
-  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
-}
-
-.search-row {
-  border: 1px solid #DBDBDB;
-  background-color: white;
-  padding: 10px;
-  /* display: flex;
-  justify-content: space-around; */
-  align-items: center;
-  -webkit-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
-	   -moz-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
-	        box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
-}
-
-.search-row {
-  width: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.home-search-bar-container {
-  width: 90%;
-}
-
-.home-search-bar-container > div {
-  width: 100%;
-}
-
-.autocomplete-dropdown-container {
-  position: absolute;
-  z-index: 10;
-  width: 440px;
-}
-
 /* ABOUT */
-
 .about-container {
   background-color: lightblue;
   flex-direction: column;

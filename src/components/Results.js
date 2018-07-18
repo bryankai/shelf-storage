@@ -4,7 +4,6 @@ import SpaceList from './SpaceList'
 import MapContainer from './MapContainer'
 import SearchBar from './SearchBar'
 
-import '../styles/Home.css';
 import '../styles/Results.css';
 
 class Results extends Component {

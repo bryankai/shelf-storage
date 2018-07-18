@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Button, Row, Col} from 'react-materialize'
-import '../styles/Home.css';
 import search from '../assets/flat/search.png'
 import reserve from '../assets/flat/reserve.png'
 import move from '../assets/flat/move.png'
@@ -8,6 +7,8 @@ import LoginModal from './LoginModal'
 import GuestSignupModal from './GuestSignupModal'
 import HostSignupModal from './HostSignupModal'
 import HomeSearchBar from './HomeSearchBar'
+
+import '../styles/Home.css';
 
 class Home extends Component {
   render() {

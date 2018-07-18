@@ -5,7 +5,9 @@ import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
 import { submitSearch, setSearchString } from '../actions/spaces';
 
-class SearchBar extends React.Component {
+import '../styles/HomeSearchBar.css';
+
+class HomeSearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = { address: '' };
@@ -74,4 +76,4 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({submitSearch, setSearchString }, dispatch)
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchBar))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomeSearchBar))

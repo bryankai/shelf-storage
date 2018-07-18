@@ -41,7 +41,7 @@ class HostSignupModal extends Component {
         fixedFooter
         actions={
           <div className='modal-footer-buttons'>
-            <Button className='signup-button' waves='light' type="submit" form="signup-form" value="Login"
+            <Button className='signup-button' waves='light' type="submit" form="host-signup-form" value="Login"
               // modal="close"
               >Sign up</Button>
             <Button flat modal="close" waves="light">Close</Button>
@@ -50,8 +50,8 @@ class HostSignupModal extends Component {
         trigger={
             <Button waves='light' className='signup-button' value="Signup" s={6}>Host Sign Up</Button>
         }>
-          <form className='signup-form'
-            id='signup-form'
+          <form className='host-signup-form'
+            id='host-signup-form'
             onSubmit={event =>
               this.handleGuestSignup(event)}
             >

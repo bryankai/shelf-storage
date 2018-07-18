@@ -17,23 +17,25 @@ class LoginModal extends Component {
 
   handleLogin = async (event) => {
     event.preventDefault()
-    console.log(this.state.loginType)
     let isAuthenticated = null
     if (this.state.loginType === 'guest') {
+      console.log('guest');
       isAuthenticated = await this.props.userLogin(this.state.email, this.state.password)
+      console.log(isAuthenticated)
     } else if (this.state.loginType === 'host') {
+      console.log('host');
       isAuthenticated = await this.props.hostLogin(this.state.email, this.state.password)
     }
-    if (isAuthenticated) {
-      console.log('isAuthenticated', isAuthenticated)
-      window.$('#loginModal').modal('close');
-      window.$('#materialize-modal-overlay-1').css('opacity', '0')
-      // this.props.getUser(this.props.auth.user.id)
-    }
+    // if (isAuthenticated) {
+    //   console.log('isAuthenticated', isAuthenticated)
+    //   window.$('#loginModal').modal('close');
+    //   window.$('#materialize-modal-overlay-1').css('opacity', '0')
+    //   // this.props.getUser(this.props.auth.user.id)
+    // }
+    // console.log('handleLogin', isAuthenticated)
   }
 
   handleOptionChange = async (type) => {
-    // event.preventDefault()
     await this.setState({loginType: type})
     console.log(this.state.loginType);
   }
@@ -56,7 +58,11 @@ class LoginModal extends Component {
         fixedFooter
         actions={
           <div className='modal-footer-buttons'>
-            <Button className='login-button' waves='light' type="submit" form="login-form" value="Login"
+            <Button className='login-button' waves='light'
+              // type="submit"
+              // form="login-form"
+              value="Login"
+              onClick={(event)=>this.handleLogin(event)}
               >Login</Button>
             <Button flat modal="close" waves="light">Close</Button>
           </div>
@@ -87,8 +93,8 @@ class LoginModal extends Component {
                 </Col>
             </Row>
             <form className='login-form'
-              id='login-form'
-              onSubmit={event => this.handleLogin(event)}
+              // id='login-form'
+              // onSubmit={event => this.handleLogin(event)}
               >
             <Input type="email" label="Email" s={12}
               onChange={event =>

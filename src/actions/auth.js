@@ -34,6 +34,7 @@ export const userLogin = (email, password) => (
         type: USER_LOGIN_FAILED,
         payload: error
       });
+      return false
     });
   }
 );
