@@ -1,11 +1,8 @@
 import React from 'react';
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from 'react-places-autocomplete'
+import PlacesAutocomplete from 'react-places-autocomplete'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Redirect, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { submitSearch, setSearchString } from '../actions/spaces';
 
 class SearchBar extends React.Component {

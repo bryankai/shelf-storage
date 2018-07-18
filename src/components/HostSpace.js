@@ -1,24 +1,17 @@
 import React, { Component }  from 'react';
 import { Link } from 'react-router-dom'
 import { Card, CardTitle, Col } from 'react-materialize'
-import moment from 'moment'
+
+import '../styles/HostSpace.css'
 
 class HostSpace extends Component {
 
   render() {
-    console.log('HostSpace', this.props.hostSpace)
     const {
       // Space
-      id, name, description, img_link, address, city, state, zip, lat, lng, size,
+      id, name, description, img_link, address, city, state, zip, size,
 
     } = this.props.hostSpace
-
-    const containerStyle = {
-      display: 'flex',
-      justifyContent: 'center'
-    }
-
-    console.log(id)
 
     // Issue with this link directing to /host/host/spaces... or /spaces, but not host/spaces...
     const spaceOrdersLink = `/spaces/${id}/reservations`
@@ -31,9 +24,8 @@ class HostSpace extends Component {
     }
 
     return (
-      // <div style={containerStyle}>
         <Col s={12} m={12} l={12} key={id}>
-          <Card key={id} className='orders-card horizontal'  header={<CardTitle image={img_link}></CardTitle>}
+          <Card id={id} key={id} className='orders-card horizontal'  header={<CardTitle image={img_link}></CardTitle>}
           >
             <h5><Link to={spaceOrdersLink} >{name}</Link></h5>
             <p>{address}</p>
@@ -43,7 +35,6 @@ class HostSpace extends Component {
             <h6><Link to={spacePageLink} >Public Preview</Link></h6>
           </Card>
         </Col>
-      // </div>
     )
   }
 }

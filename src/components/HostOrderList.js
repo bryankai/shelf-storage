@@ -22,13 +22,12 @@ class HostOrderList extends Component {
 
     if(this.props.hostAuth.user.id) {
       this.props.fetchAllOrdersBySpaceId(this.props.hostAuth.user.id, spaceId)
-      // this.props.fetchOneSpace(spaceId)
     }
   }
 
   render() {
     console.log(this.props.hostOrders)
-    if(this.props.hostOrders.isLoading || !this.props.hostOrders.hostOrders || space)
+    if(this.props.hostOrders.isLoading || !this.props.hostOrders.hostOrders)
       return <div className='preloader'>
         <Preloader size='big'/>
       </div>

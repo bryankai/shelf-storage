@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {Row, Col, Preloader, Button, Card} from 'react-materialize'
+import {Row, Col, Preloader, Button} from 'react-materialize'
 import HostSpace from './HostSpace'
 import '../styles/Home.css';
 import { getHostUser } from '../actions/hostAuth';

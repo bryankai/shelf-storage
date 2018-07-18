@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Input, Button, Row, Col} from 'react-materialize'
+import {Button, Row, Col} from 'react-materialize'
 import '../styles/Home.css';
 import search from '../assets/flat/search.png'
 import reserve from '../assets/flat/reserve.png'

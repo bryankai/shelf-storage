@@ -1,5 +1,5 @@
 import React, { Component }  from 'react';
-import { Card, CardTitle, Col } from 'react-materialize'
+import { Card, Col } from 'react-materialize'
 import moment from 'moment'
 
 class HostOrder extends Component {
@@ -32,9 +32,8 @@ class HostOrder extends Component {
     const timeRange = `${newStartDate} - ${newEndDate}`
 
     return (
-      // <div style={containerStyle}>
         <Col s={4} m={4} l={4} key={id}>
-          <Card key={id} className='' 
+          <Card key={id} className=''
           >
             <div className='host-info center-center'>
               <img src={avatar} alt="Avatar" className="avatar-small"/>
@@ -47,7 +46,6 @@ class HostOrder extends Component {
             <h6> Total Cost: ${total_cost} </h6>
           </Card>
         </Col>
-      // </div>
     )
   }
 }
