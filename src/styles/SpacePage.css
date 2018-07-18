@@ -59,6 +59,16 @@
   left:-200px;
 }
 
+.DateRangePicker_picker > div {
+  margin-bottom: 50px;
+  right: 120px;
+  /* bottom: 50px; */
+}
+
+.DayPicker_transitionContainer[style] {
+  height: 400px !important;
+}
+
 
 /* Booking Details */
 #book-results {

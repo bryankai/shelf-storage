@@ -25,6 +25,7 @@ class LoginModal extends Component {
       isAuthenticated = await this.props.hostLogin(this.state.email, this.state.password)
     }
     if (isAuthenticated) {
+      console.log('isAuthenticated', isAuthenticated)
       window.$('#loginModal').modal('close');
       window.$('#materialize-modal-overlay-1').css('opacity', '0')
       // this.props.getUser(this.props.auth.user.id)

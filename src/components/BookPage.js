@@ -75,6 +75,7 @@ class BookPage extends Component {
           <div>Select Dates</div>
         </div>
         <DateRangePicker
+          id="date-picker"
           startDateId="startDate"
           endDateId="endDate"
           startDate={this.state.startDate}
