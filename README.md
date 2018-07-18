@@ -22,8 +22,6 @@ Have extra storage space?  Need some extra revenue?
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 
-
-
 ### Setting Up
 In order to get your Shelf app up in development mode, you need to do a few steps:
 
@@ -47,7 +45,25 @@ npm start
 
 This project has been deployed on Heroku at the address:
 https://shelf-storage.herokuapp.com/
-![screenshot]()
+
+Search Results - Google Places API autocomplete dropdown bar
+![results-screenshot](src/assets/screenshots/ss-SearchResultsDropdown.png)
+
+Individual Space Page
+![space-screenshot](src/assets/screenshots/ss-Space.png)
+
+Dynamic Date Selection
+![dateSelection-screenshot](src/assets/screenshots/ss-DateSelection.png)
+
+Guest: Manage Orders
+![guestOrders-screenshot](src/assets/screenshots/ss-GuestOrders.png)
+
+Host: Manage Spaces
+![hostSpaces-screenshot](src/assets/screenshots/ss-HostSpaces.png)
+
+Host: Manage Orders for each Space
+![hostOrders-screenshot](src/assets/screenshots/ss-HostOrders.png)
+
 
 ## Built With
 
