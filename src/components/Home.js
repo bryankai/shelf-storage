@@ -6,6 +6,7 @@ import reserve from '../assets/flat/reserve.png'
 import move from '../assets/flat/move.png'
 import LoginModal from './LoginModal'
 import GuestSignupModal from './GuestSignupModal'
+import HostSignupModal from './HostSignupModal'
 import HomeSearchBar from './HomeSearchBar'
 
 class Home extends Component {
@@ -48,7 +49,7 @@ class Home extends Component {
         <div className="signup-container screen">
           <div className="signup-subcontainer">
             <Row className="title">
-              <h1>Join Shelf</h1>
+              <h1>Join the neighborhood</h1>
             </Row>
             <Row className="buttons-box">
               <Col s={12} m={6} className='guest-column'>
@@ -59,7 +60,7 @@ class Home extends Component {
               </Col>
               <Col s={12} m={6} className='host column'>
                 <h3>Become a Host</h3>
-                <GuestSignupModal/>
+                <HostSignupModal/>
                 <Button waves='light' className='login-button'   value="Login" s={6}><LoginModal/></Button>
               </Col>
             </Row>

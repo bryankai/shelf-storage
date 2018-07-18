@@ -12,8 +12,8 @@
 }
 
 .search-container {
-  /* background-color: palegreen; */
-  background-image: url('../assets/suitcases.jpeg')
+  background-image: url('../assets/suitcases.jpeg');
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
 }
 
 .search-row {
@@ -62,8 +62,9 @@
 
 /* SIGN UP */
 .signup-container {
-  /* background-color: #ffdb99; */
-  background-image: url('../assets/sun_grass.jpeg');
+  /* background-image: url('../assets/sun_grass.jpeg'); */
+  background-image: url('../assets/neighborhood.jpeg');
+  color: white;
   opacity: 0.9;
   margin: 0;
   padding: 0;
@@ -71,9 +72,19 @@
   background-repeat: no-repeat;
   /* background-attachment: fixed; */
   background-size: cover;
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.3);
+}
+
+.signup-container-filter {
+  z-index: -1;
+  background-color: white;
+  opacity: 0.1;
+  height: 100vh;
+  width: 100vw;
 }
 
 .signup-subcontainer {
+  z-index: 1;
   width: 80%;
 }
 
