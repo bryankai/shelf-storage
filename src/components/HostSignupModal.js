@@ -13,7 +13,7 @@ class HostSignupModal extends Component {
       email: "",
       password: "",
       avatar: null,
-      signupType: 'guest' //guest || host
+      signupType: 'host' //guest || host
     };
   }
 
@@ -30,14 +30,14 @@ class HostSignupModal extends Component {
   render() {
     const modalStyle = {
       justifyContent: 'center',
-      // height: '700px',
+      height: '550px',
       width: '550px'
     }
 
     return (
       <Modal style={modalStyle}
-        header='Guest Sign Up'
-        id='guestSignupModal'
+        header='Host Sign Up'
+        id='hostSignupModal'
         fixedFooter
         actions={
           <div className='modal-footer-buttons'>

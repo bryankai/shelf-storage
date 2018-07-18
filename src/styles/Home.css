@@ -30,16 +30,23 @@
 
 .search-row {
   width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .home-search-bar-container {
-  width: 90%
+  width: 90%;
+}
+
+.home-search-bar-container > div {
+  width: 100%;
 }
 
 .autocomplete-dropdown-container {
   position: absolute;
   z-index: 10;
-  width: 100%;
+  width: 440px;
 }
 
 /* ABOUT */

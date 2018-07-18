@@ -30,7 +30,7 @@ class GuestSignupModal extends Component {
   render() {
     const modalStyle = {
       justifyContent: 'center',
-      // height: '700px',
+      height: '550px',
       width: '550px'
     }
 
