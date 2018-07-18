@@ -4,11 +4,6 @@
   color: white;
 }
 
-.search-container {
-  background-image: url('../assets/suitcases.jpeg');
-  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
-}
-
 .search-row {
   border: 1px solid #DBDBDB;
   background-color: white;
