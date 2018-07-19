@@ -32,6 +32,7 @@ class HostSpace extends Component {
             <p>{city},{state} {zip}</p>
             <h6>{size} sqft</h6>
             <h6>{description}</h6>
+            <h6>{truncateString(description,250)}</h6>
             <h6><Link to={spacePageLink} >Public Preview</Link></h6>
           </Card>
         </Col>

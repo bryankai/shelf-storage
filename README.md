@@ -75,6 +75,7 @@ Host: Manage Orders for each Space
 * [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and Node.js
 * [Node.js](https://nodejs.org/en/) - Package ecosystem
 * [Express.js](https://expressjs.com/) - Node.js web application framework
+* [Knex.js](https://knexjs.org/) - SQL query builder
 * [PostgreSQL](https://www.postgresql.org/) - SQL database
 * [GoogleMapsAPI](https://developers.google.com/maps/documentation/javascript/) - Interactive maps
 * [GooglePlacesAPI](https://developers.google.com/places/web-service/intro) - Places database for the dropdown autocomplete toolbar

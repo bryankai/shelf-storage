@@ -10,21 +10,10 @@ class Order extends Component {
       // Order
       id, start_date, end_date, total_cost,
       // Space
-      spaces_id, name, img_link, address, city, state, zip, lat, lng, size,
+      spaces_id, name, img_link, address, city, state, zip, size,
       // Host
-      hosts_id, hostFirstName, hostLastName, hostAvatar
+      hostFirstName, hostAvatar
     } = this.props.order
-
-    const containerStyle = {
-      display: 'flex',
-      justifyContent: 'center'
-    }
-
-    const truncateString = (text, length=60) => {
-      const maxLength = length;
-      const trimmedString = text.substring(0, maxLength);
-      return text.length<=maxLength ? text : `${trimmedString}...`
-    }
 
     const spacePageLink = `/spaces/${spaces_id}`
     const newStartDate = (moment(start_date).format("ddd, MMM D"))
@@ -48,6 +37,7 @@ class Order extends Component {
             <p>{address}</p>
             <p>{city},{state} {zip}</p>
             <h6>{size} sqft</h6>
+            <h6> Total Cost: ${total_cost} </h6>
           </Card>
         </Col>
       // </div>

@@ -15,8 +15,7 @@ class NavBar extends Component {
     loginType: null
   }
 
-  componentDidMount = async () => {
-    // await this.props.getUser()
+  componentDidMount = () => {
     if(this.props.auth.user.id) {
       this.props.fetchGuest(this.props.auth.user.id)
     } else if (this.props.hostAuth.user.id) {

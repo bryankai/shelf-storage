@@ -5,28 +5,13 @@ import moment from 'moment'
 class HostOrder extends Component {
 
   render() {
-    console.log('HostOrder props',this.props.hostOrder)
     const {
       // Order
       id, start_date, end_date, total_cost,
-      // Space
-      spaces_id,
       // Guest
       first_name, avatar, email
     } = this.props.hostOrder
 
-    const containerStyle = {
-      display: 'flex',
-      justifyContent: 'center'
-    }
-
-    const truncateString = (text, length=60) => {
-      const maxLength = length;
-      const trimmedString = text.substring(0, maxLength);
-      return text.length<=maxLength ? text : `${trimmedString}...`
-    }
-
-    const spacePageLink = `/spaces/${spaces_id}`
     const newStartDate = (moment(start_date).format("ddd, MMM D"))
     const newEndDate = (moment(end_date).format("ddd, MMM D YYYY"))
     const timeRange = `${newStartDate} - ${newEndDate}`
