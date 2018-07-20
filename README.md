@@ -3,7 +3,7 @@
 This is the frontend of the project.
 The backend repo can be found at: https://github.com/bryankai/shelf-storage-backend
 
-*Shelf* is a community storage sharing platform that connects users looking for affordable short-term storage with users with available storage spaces.  
+*Shelf* is a community storage sharing platform that connects users with hosts to find affordable short-term storage in the community.  
 
 ### Guests
 Have stuff to store?  In-between moves?  Studying abroad?  
