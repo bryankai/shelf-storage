@@ -26,11 +26,9 @@ class SearchBar extends React.Component {
   handleSelect = address => {
     geocodeByAddress(address)
       .then(results => {
-        console.log(results[0].formatted_address)
         return getLatLng(results[0])
       })
       .then(latLng => this.props.submitSearch(latLng))
-      // Need to do an action, send it to state
       .catch(error => console.error('Error', error));
   };
 

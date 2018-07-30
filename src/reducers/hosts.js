@@ -28,7 +28,6 @@ export const hostSpaces = (state = spacesInitialState, action) => {
     case FETCH_HOST_SPACES_PENDING:
       return {...state, isLoading: true}
     case FETCH_HOST_SPACES_SUCCESS:
-      console.log('success', action.payload)
       return {...state, isLoading: false, hostSpaces: action.payload}
     case FETCH_HOST_SPACES_FAILED:
       return {...state, isLoading: false, showError: true}
@@ -48,7 +47,6 @@ export const hostOrders = (state = ordersInitialState, action) => {
     case FETCH_HOST_ORDERS_PENDING:
       return {...state, isLoading: true}
     case FETCH_HOST_ORDERS_SUCCESS:
-      console.log('success', action.payload)
       return {...state, isLoading: false, hostOrders: action.payload}
     case FETCH_HOST_ORDERS_FAILED:
       return {...state, isLoading: false, showError: true}

@@ -11,17 +11,12 @@ class OrderList extends Component {
 
   // Mounting Methods
   componentDidMount = async () => {
-    // console.log('ORDER LIST',this.props.auth.user.id)
-    // await this.props.getUser()
-    console.log('OrderList did mount')
     if(this.props.auth.user.id) {
-      console.log('fetchGuestOrders')
       this.props.fetchOrdersByGuestId(this.props.auth.user.id)
     }
   }
 
   render() {
-    console.log(this.props.orders)
     if(this.props.orders.isLoading || !this.props.orders.orders)
       return <div className='preloader'>
         <Preloader size='big'/>

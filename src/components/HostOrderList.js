@@ -13,9 +13,7 @@ class HostOrderList extends Component {
   // Mounting Methods
   componentDidMount = async () => {
     const spaceId = this.props.spaceId
-    console.log('HostOrderList', spaceId)
     await this.props.getHostUser()
-    console.log('HostOrderList did mount')
 
     if(this.props.hostAuth.user.id) {
       this.props.fetchAllOrdersBySpaceId(this.props.hostAuth.user.id, spaceId)
@@ -23,20 +21,15 @@ class HostOrderList extends Component {
   }
 
   render() {
-    console.log(this.props.hostOrders)
     if(this.props.hostOrders.isLoading || !this.props.hostOrders.hostOrders)
       return <div className='preloader'>
         <Preloader size='big'/>
       </div>
 
     const space = this.props.hostOrders.hostOrders.find(hostOrder => {
-      console.log(hostOrder.spaces_id, this.props.spaceId)
       return hostOrder.spaces_id == this.props.spaceId
     })
-    console.log(this.props.spaceId);
-    console.log(space)
     const hostOrders = this.props.hostOrders.hostOrders.map(hostOrder => {
-      console.log(hostOrder)
       return <HostOrder key={hostOrder.id} hostOrder={hostOrder}/>
     })
 

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {Preloader, Row, Col} from 'react-materialize'
 import { fetchOneSpace } from '../actions/spaces';
-// import BookSpaceModal from './BookSpaceModal'
 import BookPage from './BookPage'
 
 import '../styles/SpacePage.css';
@@ -12,21 +11,17 @@ import '../styles/SpacePage.css';
 class SpacePage extends Component {
 
   componentDidMount = async () => {
-    console.log(this.props.match.params)
     await this.props.fetchOneSpace(this.props.match.params.spaceId)
-    // console.log(this.oneSpace.spaces)
   }
 
   render() {
     if(!this.props.oneSpace.spaces) {
-      console.log('space page loading')
       return <div className='preloader'>
         <Preloader size='big'/>
       </div>
     }
 
     const {id, name, description, img_link, city, host_name, avatar, price, temp_control, access, size,
-      // active, hosts_id, address, state, zip, deleted_at,
     } = this.props.oneSpace.spaces
 
     const imageStyle = {

@@ -12,16 +12,13 @@ class HostSpaceList extends Component {
   // Mounting Methods
   componentDidMount = async () => {
     await this.props.getHostUser()
-    console.log('HostSpaceList did mount')
     if(this.props.hostAuth.user.id) {
-      console.log(this.props.hostAuth.user.id)
       this.props.fetchAllSpacesByHostId(this.props.hostAuth.user.id)
     }
   }
 
   render() {
-    console.log(this.props)
-    // and check that user is a host
+    // Preloader
     if(this.props.hostSpaces.isLoading || !this.props.hostSpaces.hostSpaces)
       return <div className='preloader'>
         <Preloader size='big'/>

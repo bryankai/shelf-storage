@@ -10,23 +10,16 @@ import '../styles/Reservations.css';
 class HostOrders extends Component {
 
   componentDidMount = async () => {
-    console.log('hello')
     await this.props.getHostUser()
-    console.log(this.props.hostAuth.user.id)
     this.props.fetchHost(this.props.hostAuth.user.id)
-    console.log('HostOrders did mount')
   }
 
   render() {
-    console.log('HostOrder')
     const shiftDown = {
       marginTop: '60px',
     }
-
     const {spaceId} = this.props.match.params
 
-    // Need to make sure user is hostAuthorized, guest, and correct id
-    // May not need to do correct id since not query paramter
     if(!this.props.hostAuth.authorized) {
       return <Redirect to="/"/>
     }
