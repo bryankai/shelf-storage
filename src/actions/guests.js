@@ -9,7 +9,6 @@ export const fetchGuest = (guestId) => (
   dispatch => {
     request(`/guests/${guestId}`)
     .then((response) => {
-      console.log(response)
       dispatch({type: FETCH_GUEST, payload: response.data.data})
     })
   }
@@ -17,11 +16,9 @@ export const fetchGuest = (guestId) => (
 
 export const fetchOrdersByGuestId = (guestId) => (
   dispatch => {
-    console.log('fetchOrdersPending')
     dispatch({type: FETCH_GUEST_ORDERS_PENDING});
     request(`/guests/${guestId}/orders`)
     .then((response) => {
-      console.log('fetchOrdersSuccess!',response)
       dispatch({type: FETCH_GUEST_ORDERS_SUCCESS, payload: response.data.data})
     })
     .catch(error => {
@@ -37,7 +34,6 @@ export const createOrder = (guestId, spaceId, startDate, endDate, totalCost) => 
   dispatch => {
     request(`/guests/${guestId}/orders`,'post', {spaceId, startDate, endDate, totalCost})
     .then((response) => {
-      console.log(response)
       dispatch({type: CREATE_ORDER, payload: response.data.data})
     })
   }

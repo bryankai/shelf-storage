@@ -17,19 +17,16 @@ class LoginModal extends Component {
 
   handleLogin = async (event) => {
     event.preventDefault()
-    let isAuthenticated = null
     if (this.state.loginType === 'guest') {
-      isAuthenticated = await this.props.userLogin(this.state.email, this.state.password)
+      await this.props.userLogin(this.state.email, this.state.password)
     } else if (this.state.loginType === 'host') {
-      isAuthenticated = await this.props.hostLogin(this.state.email, this.state.password)
+      await this.props.hostLogin(this.state.email, this.state.password)
     }
   }
 
   handleOptionChange = async (type) => {
     await this.setState({loginType: type})
   }
-
-
 
   render() {
     const modalStyle = {

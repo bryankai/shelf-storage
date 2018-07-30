@@ -34,11 +34,9 @@ export const fetchAllSpacesByHostId = (hostId) => (
 
 export const fetchAllOrdersBySpaceId = (hostId, spaceId) => (
   dispatch => {
-    console.log('fetchOrdersPending')
     dispatch({type: FETCH_HOST_ORDERS_PENDING});
     request(`/hosts/${hostId}/spaces/${spaceId}/orders`)
     .then((response) => {
-      console.log('fetchOrdersSuccess!',response)
       dispatch({type: FETCH_HOST_ORDERS_SUCCESS, payload: response.data.data})
     })
     .catch(error => {

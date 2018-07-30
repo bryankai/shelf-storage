@@ -39,14 +39,12 @@ class HostOrderList extends Component {
       justifyContent: 'center',
     }
 
-    // if(space) {
-      const imageStyle = {
-        backgroundImage: `url(${(space ? space.img_link : "")})`,
-        backgroundPosition: '50% 50%',
-        backgroundSize: 'cover',
-        height: '60vh'
-      }
-    // }
+    const imageStyle = {
+      backgroundImage: `url(${(space ? space.img_link : "")})`,
+      backgroundPosition: '50% 50%',
+      backgroundSize: 'cover',
+      height: '60vh'
+    }
 
     return (
       <div>

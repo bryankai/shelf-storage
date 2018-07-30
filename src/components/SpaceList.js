@@ -28,14 +28,8 @@ class SpaceList extends Component {
       )
     })
 
-    const spaceListStyle = {
-      // display: 'flex',
-      // justifyContent: 'space-evenly',
-      // flexWrap: 'wrap'
-    }
-
     return (
-      <Row className="space-list-grid" style={spaceListStyle}>
+      <Row className="space-list-grid">
         {Spaces}
       </Row>
     )
@@ -46,10 +40,8 @@ const mapStateToProps = ({spaces, auth}) => {
   return {spaces, auth}
 }
 
-
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({submitSearch}, dispatch)
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(SpaceList)
