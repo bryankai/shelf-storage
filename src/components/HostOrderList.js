@@ -8,10 +8,7 @@ import { getHostUser } from '../actions/hostAuth';
 import { fetchAllOrdersBySpaceId } from '../actions/hosts';
 import { fetchOneSpace } from '../actions/spaces';
 
-
 class HostOrderList extends Component {
-
-
 
   // Mounting Methods
   componentDidMount = async () => {
