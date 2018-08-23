@@ -2,7 +2,7 @@ import React, { Component }  from 'react';
 import {Modal, Button, Input} from 'react-materialize'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { userSignup, userLogin } from '../actions/auth';
+import { hostSignup, hostLogin } from '../actions/hostAuth';
 
 class HostSignupModal extends Component {
   constructor(props) {
@@ -19,12 +19,12 @@ class HostSignupModal extends Component {
 
   handleGuestSignup = async (event) => {
     event.preventDefault()
-    const isAuthenticated = await this.props.userSignup(this.state)
+    const isAuthenticated = await this.props.hostSignup(this.state)
     if (isAuthenticated) {
       window.$('#guestSignupModal').modal('close');
       window.$('#materialize-modal-overlay-1').css('opacity', '0')
     }
-    this.props.userLogin(this.state.email, this.state.password)
+    this.props.hostLogin(this.state.email, this.state.password)
   };
 
   render() {
@@ -86,6 +86,6 @@ class HostSignupModal extends Component {
 
 const mapStateToProps = ({auth}) => ({auth});
 
-const mapDispatchToProps = dispatch => (bindActionCreators({userSignup, userLogin}, dispatch));
+const mapDispatchToProps = dispatch => (bindActionCreators({hostSignup, hostLogin}, dispatch));
 
 export default connect(mapStateToProps, mapDispatchToProps)(HostSignupModal);
