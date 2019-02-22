@@ -54,6 +54,7 @@ export const hostSignup = (newUser) => (
         type: HOST_SIGNUP_FAILED,
         payload: error
       });
+      return false
     });
   }
 );

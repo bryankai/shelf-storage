@@ -76,7 +76,7 @@ class HostSignupModal extends Component {
                 this.setState({avatar: event.target.value})}
             />
           </form>
-        <div className={ this.props.auth.showSignupError ? 'signup-auth-error' : 'signup-hide-auth-error' }>
+        <div className={ this.props.hostAuth.showSignupError ? 'signup-auth-error' : 'signup-hide-auth-error' }>
           Invalid signup submission.
         </div>
       </Modal>
@@ -84,7 +84,7 @@ class HostSignupModal extends Component {
   }
 }
 
-const mapStateToProps = ({auth}) => ({auth});
+const mapStateToProps = ({hostAuth}) => ({hostAuth});
 
 const mapDispatchToProps = dispatch => (bindActionCreators({hostSignup, hostLogin}, dispatch));
 
